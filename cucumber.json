@@ -1,0 +1,125 @@
+[
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "#language: pt"
+      }
+    ],
+    "line": 3,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 99916,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.beforeScenario()"
+            }
+          }
+        ],
+        "line": 8,
+        "name": "Login com sucesso",
+        "description": "",
+        "id": "login;login-com-sucesso",
+        "after": [
+          {
+            "result": {
+              "duration": 337919012,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginSteps.afterScenario(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 1696666922,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LoginSteps.close()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Cenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6517883279,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "que eu esteja na página de login da Pi",
+            "match": {
+              "location": "LoginSteps.que_eu_esteja_na_página_de_login_da_Pi()"
+            },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 199208020,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "eu insiro meu e-mail cadastrado",
+            "match": {
+              "location": "LoginSteps.eu_insiro_meu_e_mail_cadastrado()"
+            },
+            "keyword": "Quando "
+          },
+          {
+            "result": {
+              "duration": 77727886,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "minha senha",
+            "match": {
+              "location": "LoginSteps.minha_senha()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 43214324,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "clico no botão de Login",
+            "match": {
+              "location": "LoginSteps.clico_no_botão_de_Login()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 4373692050,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "eu devo logar com sucesso na aplicação",
+            "match": {
+              "location": "LoginSteps.eu_devo_logar_com_sucesso_na_aplicação()"
+            },
+            "keyword": "Então "
+          }
+        ]
+      }
+    ],
+    "name": "Login",
+    "description": "Como usuário Pi\nQuero realizar login na aplicação web\nPara realizar minhas tarefas",
+    "id": "login",
+    "keyword": "Funcionalidade",
+    "uri": "login.feature",
+    "tags": [
+      {
+        "line": 2,
+        "name": "@login"
+      }
+    ]
+  }
+]
