@@ -1,6 +1,0 @@
-Steps\Hooks.class
-Steps\LoginSteps.class
-Cucumber_Selenium\Cucumber_Selenium\AppTest.class
-Runner\testrunner.class
-Report\CucumberReport.class
-PageObjects\LoginPage.class

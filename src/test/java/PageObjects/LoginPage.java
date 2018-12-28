@@ -1,29 +1,61 @@
 package PageObjects;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.By;
 
-public class LoginPage {
+import com.cucumber.listener.Reporter;
 
-	@FindBy(how = How.ID, using = "idContText")
-	public WebElement textoLogin;
+import Commons.Drivers;
 
-	@FindBy(how = How.XPATH, using = "//input[@class='input inputContainerEmail sfdc_usernameinput input']")
-	public WebElement campoEmail;
-
-	@FindBy(how = How.XPATH, using = "//input[@class='input inputContainerSenha sfdc_passwordinput input']")
-	public WebElement campoSenha;
-
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Log in' )]")
-	public WebElement botaoLogin;
-
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Oi' )]")
-	public WebElement mensagemBoasVindas;
+public class LoginPage extends Drivers {
 	
+	
+	protected static By textoLogin = By.id("idContText");
+	protected static By campoEmail = By.xpath("//input[@class='input inputContainerEmail sfdc_usernameinput input']");
+	protected static By campoSenha = By.xpath("//input[@class='input inputContainerSenha sfdc_passwordinput input']");
+	protected static By botaoLogin = By.xpath("//span[contains(text(),'Log in' )]");
+	protected static By mensagemBoasVindas = By.xpath("//span[contains(text(),'Oi' )]");
+
+	public String urlBase = "https://uat-green.cs96.force.com/green/s/login/";
+
 	public String emailBase = "yieedqeu@sharklasers.com";
-	
-	public String senhaBase = "shark@01";
-	
+
+	public String senhaBase = "112018";
+
+	public void irParaLogin() throws Throwable {
+		Reporter.addStepLog("Acessando a página de login");
+		Drivers.accessDefined("chrome", urlBase);
+		Drivers.waitForElementToBeClickable(textoLogin);
+		Reporter.addStepLog("Direcionamento realizado com sucesso para a página de login");
+	}
+
+	public void inserirEmail() throws Throwable {
+		Reporter.addStepLog("Inserindo e-mail cadastrado");
+		Drivers.waitForElementToBeClickable(campoEmail);
+		Drivers.sendKeys(campoEmail, emailBase);
+		Reporter.addStepLog("E-mail " + emailBase + " inserido com sucesso.");
+	}
+
+	public void inserirSenha() throws Throwable {
+		Reporter.addStepLog("Inserindo senha cadastrada");
+		Drivers.sendKeys(campoSenha, senhaBase);
+		Reporter.addStepLog("Senha " + senhaBase + " inserida com sucesso.");
+
+	}
+
+	public void clicarBotaoLogin() throws Throwable {
+		Reporter.addStepLog("Clicando no botão de login");
+		Drivers.waitForElementToBeClickable(botaoLogin);
+		Drivers.jsClick(botaoLogin);
+		Reporter.addStepLog("Botão clicado com sucesso");
+
+	}
+
+	public boolean confirmarLogin() {
+		Reporter.addStepLog("Confirmando login realizado");
+		Drivers.waitForElementToBeVisible(mensagemBoasVindas);
+		Drivers.marcarElemento(mensagemBoasVindas);
+		Reporter.addStepLog("Login realizado com sucesso");
+		return true;
+	}
 
 }

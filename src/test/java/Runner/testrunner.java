@@ -10,10 +10,11 @@ import com.cucumber.listener.Reporter;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
+
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json",
 		"junit:target/cucumber.xml", "com.cucumber.listener.ExtentCucumberFormatter:target/report.html" }, features = {
-				"src/test/java/Features" }, glue = { "Steps" })
+				"src/test/java/Features" }, glue = { "Steps" }, tags = {})
 
 public class testrunner {
 	 @AfterClass
