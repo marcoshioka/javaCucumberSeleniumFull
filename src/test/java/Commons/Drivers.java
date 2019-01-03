@@ -2,10 +2,15 @@ package Commons;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -17,14 +22,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import PageObjects.LoginPage;
 
 //import actions.ConsultoriaFileReaderActions;
 
@@ -33,33 +38,56 @@ public class Drivers {
 	protected static WebDriver DRIVER;
 	protected static Logger log = Logger.getLogger(Drivers.class);
 	protected static CommonsPrint commonsPrint;
+	static String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
+			+ "\\files\\dadosTemporarios.txt";
 
 	protected static void accessDefined(String driver, String environment) {
 		switch (driver) {
 		case "chrome":
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
 			 */
-			/*Map<String, String> mobileEmulation = new HashMap<>();
-			mobileEmulation.put("deviceName", "Nexus 5");
-			options.setExperimentalOption("mobileEmulation", mobileEmulation);*/
+			/*
+			 * Map<String, String> mobileEmulation = new HashMap<>();
+			 * mobileEmulation.put("deviceName", "Nexus 5");
+			 * options.setExperimentalOption("mobileEmulation", mobileEmulation);
+			 */
 			options.addArguments("disable-infobars");
 			options.addArguments("--print-to-pdf");
 			options.addArguments("--start-maximized");
-			options.addArguments("--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
+			options.addArguments(
+					"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DRIVER = new ChromeDriver(options);
 			DRIVER.get(environment);
 			log.info("Url de execução dos testes: " + environment);
 			break;
 		case "firefox":
+			System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
+			optionsFirefox.addArguments("disable-infobars");
+			optionsFirefox.addArguments("--print-to-pdf");
 			optionsFirefox.addArguments("--start-maximized");
 			DRIVER = new FirefoxDriver(optionsFirefox);
 			DRIVER.get(environment);
 			log.info("Url de execução dos testes: " + environment);
 			break;
+		case "edge":
+			System.setProperty("webdriver.edge.driver", "./driver/MicrosoftWebDriver.exe");
+			EdgeOptions optionsEdge = new EdgeOptions();
+			DRIVER = new EdgeDriver(optionsEdge);
+			DRIVER.get(environment);
+			log.info("Url de execução dos testes: " + environment);
+			break;
 		}
+	}
+	
+	
+	protected static String getBrowserName() {
+
+		return DRIVER.toString();
+
 	}
 
 	protected static void waitForElementToBeClickable(By elemento) {
@@ -67,12 +95,11 @@ public class Drivers {
 		wait.until(ExpectedConditions.elementToBeClickable(elemento));
 
 	}
-	
+
 	protected static void waitForElementToBeVisible(By elemento) {
 		final WebDriverWait wait = new WebDriverWait(DRIVER, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 	}
-	
 
 	protected static void sendKeys(By elemento, String keys) {
 		DRIVER.findElement(elemento).sendKeys(keys);
@@ -81,7 +108,7 @@ public class Drivers {
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
 		jse.executeScript("arguments[0].style.border='3px solid red'", e);
 	}
-	
+
 	protected static void jsClick(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
@@ -115,6 +142,40 @@ public class Drivers {
 	protected static void closeWindow() {
 		DRIVER.quit();
 		log.info("Turn off chrome browser");
+	}
+
+	protected static String getPageSource() {
+		return DRIVER.getPageSource();
+	}
+
+	public String coletaDadoTemporario(WebDriver DRIVER) throws IOException {
+		adicionarDadoTemporarioArquivo(DRIVER);
+		BufferedReader br = new BufferedReader(new FileReader(pathDadosTemporarios));
+		String browser = br.readLine();
+		br.close();
+		return browser;
+
+	}
+
+	public void adicionarDadoTemporarioArquivo(WebDriver DRIVER) {
+		try {
+			String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
+					+ "\\files\\dadosTemporarios.txt";
+			File fileTemp = new File(pathDadosTemporarios);
+			fileTemp.delete();
+			PrintWriter printWriter = new PrintWriter(
+					new BufferedWriter(new FileWriter(fileTemp.getAbsoluteFile(), true)));
+			printWriter.printf(DRIVER.toString(), this);
+			printWriter.flush();
+			printWriter.close();
+		} catch (IOException e) {
+			e.getMessage();
+		}
+	}
+
+	public String getBrowser(WebDriver DRIVER) throws IOException {
+		return coletaDadoTemporario(DRIVER);
+
 	}
 
 	/*
@@ -205,4 +266,5 @@ public class Drivers {
 		}
 	}
 
+		
 }

@@ -19,11 +19,11 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 4575602,
+  "duration": 6250942,
   "status": "passed"
 });
 formatter.before({
-  "duration": 38886,
+  "duration": 173915955,
   "status": "passed"
 });
 formatter.scenario({
@@ -63,39 +63,39 @@ formatter.match({
   "location": "LoginSteps.que_eu_esteja_na_página_de_login_da_Pi()"
 });
 formatter.result({
-  "duration": 7064808594,
+  "duration": 7212742113,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginSteps.eu_insiro_meu_e_mail_cadastrado()"
 });
 formatter.result({
-  "duration": 928162198,
+  "duration": 1146330043,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginSteps.minha_senha()"
 });
 formatter.result({
-  "duration": 569975048,
+  "duration": 1006820191,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginSteps.clico_no_botão_de_Login()"
 });
 formatter.result({
-  "duration": 559921363,
+  "duration": 1951179033,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginSteps.eu_devo_logar_com_sucesso_na_aplicação()"
 });
 formatter.result({
-  "duration": 4077093910,
+  "duration": 3165422041,
   "status": "passed"
 });
 formatter.after({
-  "duration": 1767296226,
+  "duration": 1143817028,
   "status": "passed"
 });
 });

@@ -20,7 +20,13 @@ public class LoginPage extends Drivers {
 	public String emailBase = "yieedqeu@sharklasers.com";
 
 	public String senhaBase = "112018";
-
+	
+	public String dado1 = "Dado que eu esteja na página de login da Pi"; 
+	public String quando1 = "Quando eu insiro meu e-mail cadastrado";
+	public String e1 = "E minha senha";
+	public String e2 = "E clico no botão de Login";
+	public String entao1 = "Então eu devo logar com sucesso na aplicação";
+	
 	public void irParaLogin() throws Throwable {
 		Reporter.addStepLog("Acessando a página de login");
 		Drivers.accessDefined("chrome", urlBase);
