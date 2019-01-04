@@ -41,7 +41,7 @@ public class Drivers {
 	static String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
 			+ "\\files\\dadosTemporarios.txt";
 
-	protected static void accessDefined(String driver, String environment) {
+	protected static void accessDefined(String driver) {
 		switch (driver) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
@@ -60,8 +60,6 @@ public class Drivers {
 			options.addArguments(
 					"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DRIVER = new ChromeDriver(options);
-			DRIVER.get(environment);
-			log.info("Url de execução dos testes: " + environment);
 			break;
 		case "firefox":
 			System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
@@ -70,17 +68,17 @@ public class Drivers {
 			optionsFirefox.addArguments("--print-to-pdf");
 			optionsFirefox.addArguments("--start-maximized");
 			DRIVER = new FirefoxDriver(optionsFirefox);
-			DRIVER.get(environment);
-			log.info("Url de execução dos testes: " + environment);
 			break;
 		case "edge":
 			System.setProperty("webdriver.edge.driver", "./driver/MicrosoftWebDriver.exe");
 			EdgeOptions optionsEdge = new EdgeOptions();
 			DRIVER = new EdgeDriver(optionsEdge);
-			DRIVER.get(environment);
-			log.info("Url de execução dos testes: " + environment);
 			break;
 		}
+	}
+	
+	public static void irParaURL(String url) throws Throwable {
+		DRIVER.get(url);
 	}
 	
 	
@@ -106,22 +104,29 @@ public class Drivers {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		//jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
+		
 	}
 
 	protected static void jsClick(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		jse.executeScript("arguments[0].style.border='3px solid green'", e);
+		//jse.executeScript("arguments[0].style.border='3px solid green'", e);
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
 		jse.executeScript("arguments[0].click();", e);
+		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
 	}
 
 	protected static void marcarElemento(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		//jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		 jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
 	}
 
 	protected static void switchToOtherTab(int tabIndex) {

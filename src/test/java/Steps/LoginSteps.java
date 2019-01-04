@@ -1,16 +1,5 @@
 package Steps;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.junit.rules.TestName;
-import org.openqa.selenium.WebDriver;
-
-import com.itextpdf.text.DocumentException;
-
-import Commons.Drivers;
 import Commons.PDFGenerator;
 import PageObjects.LoginPage;
 import cucumber.api.Scenario;
@@ -20,35 +9,25 @@ import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
-public class LoginSteps extends LoginPage{
+public class LoginSteps extends LoginPage {
 	private LoginPage LoginPage = new LoginPage();
-	private Hooks hooks = new Hooks(); 
+	private Hooks hooks = new Hooks();
 	private PDFGenerator pdfGenerator = new PDFGenerator();
-	private Scenario scenario;
-	//private ReportPDF report;
-	private boolean isPassed;
-	//private Method method;
-	private TestName testName = new TestName();
-	private HttpServletRequest request;
-	private WebDriver driver;
-	
-	@Before(value = "@login", order=0)
-	public void initReport() throws Exception {
-		//report = ReportUtils.criaTemplateEvidencia(report);
-	}
 	
 	@Before
 	public void before(Scenario scenario) throws Exception {
-	    this.scenario = scenario;
-	    pdfGenerator.iniciaPDF(scenario);
+		pdfGenerator.iniciaPDF(scenario);
 	}
-	
+
+	@After(value = "@login", order = 1)
+	public void finalizaPDF(Scenario scenario) throws Exception {
+		pdfGenerator.fechaPDF(scenario);
+	}
+
 	@After(value = "@login", order = 0)
-	public void close() throws Exception {
-		//pdfGenerator.geraPDF(scenario);
+	public void close(Scenario scenario) throws Exception {
+		hooks.getEvidence();
 		hooks.closeBrowser();
-		pdfGenerator.fechaPDF();
-				
 	}
 
 	@Dado("^que eu esteja na página de login da Pi$")
@@ -56,7 +35,6 @@ public class LoginSteps extends LoginPage{
 		LoginPage.irParaLogin();
 		pdfGenerator.conteudoPDF(LoginPage.dado1);
 		hooks.getEvidence();
-		
 	}
 
 	@Quando("^eu insiro meu e-mail cadastrado$")
@@ -79,13 +57,12 @@ public class LoginSteps extends LoginPage{
 		pdfGenerator.conteudoPDF(LoginPage.e2);
 		hooks.getEvidence();
 	}
-		
+
 	@Entao("^eu devo logar com sucesso na aplicação$")
 	public void eu_devo_logar_com_sucesso_na_aplicação() throws Throwable {
-		isPassed= LoginPage.confirmarLogin();	
+		LoginPage.confirmarLogin();
 		pdfGenerator.conteudoPDF(LoginPage.entao1);
 		hooks.getEvidence();
 	}
-	
-		
+
 }

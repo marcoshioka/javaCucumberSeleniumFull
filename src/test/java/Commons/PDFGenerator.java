@@ -31,12 +31,12 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import Steps.Hooks;
 import cucumber.api.Scenario;
-
-
+import gherkin.formatter.model.Result;
 
 public class PDFGenerator extends Drivers {
 	public Method method;
@@ -47,7 +47,8 @@ public class PDFGenerator extends Drivers {
 	private static WebDriver driver;
 	private JavascriptExecutor js;
 	public Hooks hooks = new Hooks();
-	
+	private Result result;
+
 	public void geraPDF(Scenario scenario) {
 		try {
 
@@ -112,6 +113,9 @@ public class PDFGenerator extends Drivers {
 			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
 			image.scaleToFit(documentWidth, documentHeight);
+			image.setBorder(Rectangle.BOX);
+			image.setBorderColor(BaseColor.BLACK);
+			image.setBorderWidth(1f);
 			document.add(image);
 
 			document.close();
@@ -122,10 +126,19 @@ public class PDFGenerator extends Drivers {
 
 	}
 
+	/*
+	 * Método responsável por iniciar a criação do arquivo PDF
+	 *
+	 */
 	public void iniciaPDF(Scenario scenario) throws Exception {
+		String featureName = "Feature ";
+		String rawFeatureName = scenario.getId().split(";")[0].replace("-", " ");
+		featureName = featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
+				
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
-		PdfWriter.getInstance(document, new FileOutputStream("evidencia.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream(featureName + ".pdf"));
+		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
 		Font f = new Font();
@@ -142,9 +155,6 @@ public class PDFGenerator extends Drivers {
 		logo.scalePercent(10);
 		document.add(logo);
 
-		String featureName = "Feature ";
-		String rawFeatureName = scenario.getId().split(";")[0].replace("-", " ");
-		featureName = featureName + rawFeatureName.substring(0, 1).toUpperCase() + rawFeatureName.substring(1);
 		document.add(new Paragraph(featureName, f));
 
 		document.add(new Paragraph("Cenário: " + scenario.getName(), f));
@@ -162,9 +172,9 @@ public class PDFGenerator extends Drivers {
 		String nameOS = "os.name";
 		document.add(new Paragraph("Sistema operacional: " + System.getProperty(nameOS), font));
 
-		//document.add(new Paragraph("Browser: " + browserInformation, font));
+		// document.add(new Paragraph("Browser: " + browserInformation, font));
 
-		if (scenario.getStatus() == "passed") {
+		/*if (scenario.getStatus() == "passed") {
 			Font color = new Font();
 			color.setFamily("Courier");
 			color.setStyle(Font.BOLD);
@@ -178,12 +188,16 @@ public class PDFGenerator extends Drivers {
 			color.setStyle(Font.BOLD);
 			color.setSize(20);
 			document.add(new Paragraph("Status: " + scenario.getStatus(), color));
-		}
+		}*/
 
 		document.add(Chunk.NEWLINE);
 
 	}
 
+	/*
+	 * Método responsável pelo conteúdo de cada step do BDD no arquivo PDF.
+	 *
+	 */
 	public void conteudoPDF(String nomeMetodo) throws IOException, DocumentException {
 
 		document.newPage();
@@ -193,6 +207,7 @@ public class PDFGenerator extends Drivers {
 		color.setStyle(Font.BOLD);
 		color.setSize(15);
 		color.setColor(BaseColor.BLUE);
+
 		document.add(new Paragraph(nomeMetodo, color));
 
 		File screenshot = ((TakesScreenshot) Drivers.DRIVER).getScreenshotAs(OutputType.FILE);
@@ -201,15 +216,55 @@ public class PDFGenerator extends Drivers {
 		Image image = Image.getInstance("screenshot.png");
 		float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
 		float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
+		image.setBorder(Rectangle.BOX);
+		image.setBorderColor(BaseColor.BLACK);
+		image.setBorderWidth(1f);
 		image.scaleToFit(documentWidth, documentHeight);
 		document.add(image);
 
-		// document.add( Chunk.NEWLINE );
-
 	}
+	
+	
+/*
+ * Método responsável por finalizar o PDF e, no caso de falha, tira uma evidência. 
+ */
+	public void fechaPDF(Scenario scenario) throws DocumentException, IOException {
+		if (scenario.isFailed()) {
 
-	public void fechaPDF() {
-		document.close();
+			document.newPage();
+
+			Font colorFailed = new Font();
+			colorFailed.setFamily("Courier");
+			colorFailed.setStyle(Font.BOLD);
+			colorFailed.setSize(15);
+			colorFailed.setColor(BaseColor.RED);
+
+			document.add(new Paragraph("Status: " + scenario.getStatus(), colorFailed));
+			document.add(new Paragraph("Evidência da falha: ", colorFailed));
+			
+			
+			File screenshot = ((TakesScreenshot) Drivers.DRIVER).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(screenshot, new File("screenshot.png"));
+
+			Image image = Image.getInstance("screenshot.png");
+			float documentWidth = document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin();
+			float documentHeight = document.getPageSize().getHeight() - document.topMargin() - document.bottomMargin();
+			image.scaleToFit(documentWidth, documentHeight);
+			image.setBorder(Rectangle.BOX);
+			image.setBorderColor(BaseColor.BLACK);
+			image.setBorderWidth(1f);
+			document.add(image);
+			document.close();
+		} else {
+			Font colorPassed = new Font();
+			colorPassed.setFamily("Courier");
+			colorPassed.setColor(BaseColor.GREEN);
+			colorPassed.setStyle(Font.BOLD);
+			colorPassed.setSize(20);
+			document.add(new Paragraph("Status: " + scenario.getStatus(), colorPassed));
+			
+			document.close();
+		}
 	}
 
 	public String scenarioName() {
@@ -251,16 +306,10 @@ public class PDFGenerator extends Drivers {
 		// Have to return something if everything fails
 		return "Error: Unable to get default browser";
 	}
-
 	
-	
-	public String getClientBrowser(HttpServletRequest request) {
-		String browserDetails = request.getHeader("User-Agent");
-		String browser = browserDetails.toLowerCase();
-
-		return browser;
-	}
-
-	
+	public String getResult() {
+		return log.getName().toString();
+	     
+		}
 
 }

@@ -20,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 import com.cucumber.listener.Reporter;
 
 import Commons.Drivers;
+import cucumber.api.java.Before;
 
 public class Hooks extends Drivers {
 
@@ -35,13 +36,11 @@ public class Hooks extends Drivers {
 	 * 
 	 * @author Marcos Ribeiro Hioka
 	 */
-	/*
-	 * @Before("@login") public void beforeScenario() {
-	 * 
-	 * System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-	 * 
-	 * }
-	 */
+	 @Before("@login, @cadastro") 
+	 public void beforeScenario() {
+		 accessDefined("chrome");
+	 }
+	
 
 	/**
 	 * Método responsável por fechar o browser, no fim da execução do teste

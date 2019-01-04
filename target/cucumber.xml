@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="15.806477">
-    <testcase classname="Login" name="Login com sucesso" time="15.806477">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="25.197203">
+    <testcase classname="Cadastro" name="Cadastro full" time="10.10284">
+        <system-out>
+            <![CDATA[Dado que eu esteja na pagina de cadastro da Pi..............................passed
+Quando eu envio nome valido com e-mail......................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Login" name="Login com sucesso" time="15.094363">
         <system-out>
             <![CDATA[Dado que eu esteja na página de login da Pi.................................passed
 Quando eu insiro meu e-mail cadastrado......................................passed
