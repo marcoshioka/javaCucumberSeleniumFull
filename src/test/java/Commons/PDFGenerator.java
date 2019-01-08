@@ -48,6 +48,7 @@ public class PDFGenerator extends Drivers {
 	private JavascriptExecutor js;
 	public Hooks hooks = new Hooks();
 	private Result result;
+	public Drivers driv = new Drivers();
 
 	public void geraPDF(Scenario scenario) {
 		try {
@@ -172,7 +173,9 @@ public class PDFGenerator extends Drivers {
 		String nameOS = "os.name";
 		document.add(new Paragraph("Sistema operacional: " + System.getProperty(nameOS), font));
 
-		// document.add(new Paragraph("Browser: " + browserInformation, font));
+		//Drivers driv = new Drivers();
+		
+		//document.add(new Paragraph("Browser: " + driv.getBrowser(), font));
 
 		/*if (scenario.getStatus() == "passed") {
 			Font color = new Font();

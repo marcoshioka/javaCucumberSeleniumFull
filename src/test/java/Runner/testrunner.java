@@ -15,7 +15,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json",
 		"junit:target/cucumber.xml", "com.cucumber.listener.ExtentCucumberFormatter:target/report.html" }, features = {
 				"src/test/java/Features/cadastro.feature",  
-				"src/test/java/Features/login.feature"}, 
+				/*"src/test/java/Features/login.feature"*/}, 
 		glue = { "Steps" }, tags = {})
 
 public class testrunner {

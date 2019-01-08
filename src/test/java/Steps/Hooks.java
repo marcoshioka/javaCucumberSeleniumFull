@@ -99,9 +99,26 @@ public class Hooks extends Drivers {
 
 	}
 
-	public String getBrowser() throws IOException {
+	/*public String getBrowser() throws IOException {
 		return coletaDadoTemporario();
 
+	}*/
+	
+	public void salvaDados(String dadoSalvo) throws IOException {
+		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\dadosTemporarios.txt";
+		BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+    	bw.write(dadoSalvo);
+    	bw.close();
+    				
+	}
+	
+	public String coletaDados() throws IOException {
+		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\dadosTemporarios.txt";
+		BufferedReader bw = new BufferedReader(new FileReader(temp));
+    	String text = bw.readLine();
+    	bw.close();
+    	return text;
+    				
 	}
 
 }

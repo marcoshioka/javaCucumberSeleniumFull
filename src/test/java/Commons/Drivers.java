@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
@@ -26,10 +28,12 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.hp.lft.sdk.Keys;
 
 //import actions.ConsultoriaFileReaderActions;
 
@@ -54,11 +58,12 @@ public class Drivers {
 			 * mobileEmulation.put("deviceName", "Nexus 5");
 			 * options.setExperimentalOption("mobileEmulation", mobileEmulation);
 			 */
+			options.addArguments("--disable-notifications");
 			options.addArguments("disable-infobars");
 			options.addArguments("--print-to-pdf");
 			options.addArguments("--start-maximized");
-			options.addArguments(
-					"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
+			//options.addArguments(
+					//"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DRIVER = new ChromeDriver(options);
 			break;
 		case "firefox":
@@ -76,20 +81,57 @@ public class Drivers {
 			break;
 		}
 	}
-	
+
 	public static void irParaURL(String url) throws Throwable {
 		DRIVER.get(url);
 	}
-	
-	
-	protected static String getBrowserName() {
 
+	protected static String getBrowserName() {
 		return DRIVER.toString();
 
 	}
 
-	protected static void waitForElementToBeClickable(By elemento) {
-		final WebDriverWait wait = new WebDriverWait(DRIVER, 10);
+	public static String coletarValue(By elemento) throws Throwable {
+		By by = elemento;
+		WebElement e = DRIVER.findElement(by);
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+		jse.executeScript("arguments[0].click();", e);
+		String value = e.getAttribute("value");
+		return value;
+
+	}
+
+	public static void scrollToElement(By elemento) {
+		By by = elemento;
+		WebElement element = DRIVER.findElement(by);
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	public static void scrollDown() {
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("window.scrollBy(0,250)", "");
+	}
+
+	public static void scrollUp() {
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("window.scrollBy(0,-250)", "");
+	}
+
+	public static void implicitlyWait(int seconds) throws InterruptedException {
+		DRIVER.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+	}
+
+	public static void pageDownTwice() {
+		Actions action = new Actions(DRIVER);
+		action.sendKeys(Keys.PAGE_DOWN).build().perform();
+		action.sendKeys(Keys.PAGE_DOWN).build().perform();
+
+	}
+
+	public static void waitForElementToBeClickable(By elemento) {
+		final WebDriverWait wait = new WebDriverWait(DRIVER, 15);
 		wait.until(ExpectedConditions.elementToBeClickable(elemento));
 
 	}
@@ -99,34 +141,54 @@ public class Drivers {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 	}
 
+	protected static void acceptAlert() {
+		Alert alert = DRIVER.switchTo().alert();
+		alert.accept();
+	}
+	
+	protected static void refresh() {
+		DRIVER.navigate().refresh();
+	}
+
 	protected static void sendKeys(By elemento, String keys) {
 		DRIVER.findElement(elemento).sendKeys(keys);
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		//jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		// jse.executeScript("arguments[0].style.border='3px solid red'", e);
 		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
-		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
-		
+		// jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e,
+		// "");
+
+	}
+
+	protected static void click(By elemento) {
+		By by = elemento;
+		WebElement e = DRIVER.findElement(by);
+		e.click();
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
 	}
 
 	protected static void jsClick(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		//jse.executeScript("arguments[0].style.border='3px solid green'", e);
+		// jse.executeScript("arguments[0].style.border='3px solid green'", e);
 		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
 		jse.executeScript("arguments[0].click();", e);
-		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
+		// jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e,
+		// "");
 	}
 
 	protected static void marcarElemento(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
-		//jse.executeScript("arguments[0].style.border='3px solid red'", e);
-		 jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
-		//jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "");
+		// jse.executeScript("arguments[0].style.border='3px solid red'", e);
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+		// jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e,
+		// "");
 	}
 
 	protected static void switchToOtherTab(int tabIndex) {
@@ -178,21 +240,12 @@ public class Drivers {
 		}
 	}
 
-	public String getBrowser(WebDriver DRIVER) throws IOException {
-		return coletaDadoTemporario(DRIVER);
+	public static String getBrowser() throws IOException {
+		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
+	    String browserName = cap.getBrowserName().toLowerCase();
+		return browserName;
 
 	}
-
-	/*
-	 * protected static void navigateToASpecificUrl(String urlToNavigate) {
-	 * DRIVER.navigate().to(ConsultoriaFileReaderActions.navigateToUrl(urlToNavigate
-	 * )); }
-	 */
-
-	/*
-	 * protected static void click(String path) { DRIVER.findElement(By.).
-	 * log.info("Turn off chrome browser"); }
-	 */
 
 	// CommonsMethods
 	// execute a JS script
@@ -271,5 +324,4 @@ public class Drivers {
 		}
 	}
 
-		
 }

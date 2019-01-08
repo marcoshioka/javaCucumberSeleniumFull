@@ -12,7 +12,7 @@
         "before": [
           {
             "result": {
-              "duration": 195653830,
+              "duration": 181643489,
               "status": "passed"
             },
             "match": {
@@ -21,7 +21,7 @@
           },
           {
             "result": {
-              "duration": 221281395,
+              "duration": 285673547,
               "status": "passed"
             },
             "match": {
@@ -30,7 +30,7 @@
           },
           {
             "result": {
-              "duration": 2083612152,
+              "duration": 2255901912,
               "status": "passed"
             },
             "match": {
@@ -38,14 +38,14 @@
             }
           }
         ],
-        "line": 9,
+        "line": 10,
         "name": "Cadastro full",
         "description": "",
         "id": "cadastro;cadastro-full",
         "after": [
           {
             "result": {
-              "duration": 6432410,
+              "duration": 6095937,
               "status": "passed"
             },
             "match": {
@@ -54,7 +54,7 @@
           },
           {
             "result": {
-              "duration": 1403390976,
+              "duration": 1161356283,
               "status": "passed"
             },
             "match": {
@@ -67,27 +67,63 @@
         "steps": [
           {
             "result": {
-              "duration": 4680392382,
+              "duration": 4922447600,
               "status": "passed"
             },
-            "line": 10,
-            "name": "que eu esteja na pagina de cadastro da Pi",
+            "line": 11,
+            "name": "que eu tenha um email para cadastro",
             "match": {
-              "location": "CadastroSteps.que_eu_esteja_na_pagina_de_cadastro_da_Pi()"
+              "location": "CadastroSteps.que_eu_tenha_um_email_para_cadastro()"
             },
             "keyword": "Dado "
           },
           {
             "result": {
-              "duration": 1512076567,
+              "duration": 4330260250,
               "status": "passed"
             },
-            "line": 11,
+            "line": 12,
+            "name": "que eu esteja na pagina de cadastro da Pi",
+            "match": {
+              "location": "CadastroSteps.que_eu_esteja_na_pagina_de_cadastro_da_Pi()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 1414224538,
+              "status": "passed"
+            },
+            "line": 13,
             "name": "eu envio nome valido com e-mail",
             "match": {
               "location": "CadastroSteps.eu_envio_nome_valido_com_e_mail()"
             },
             "keyword": "Quando "
+          },
+          {
+            "result": {
+              "duration": 15068150603,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "valido a informação do e-mail recebido para cadastro",
+            "match": {
+              "location": "CadastroSteps.valido_a_informação_do_e_mail_recebido_para_cadastro()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 6725655271,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "insiro informações válidas de senha",
+            "match": {
+              "location": "CadastroSteps.insiro_informações_válidas_de_senha()"
+            },
+            "keyword": "E "
           }
         ]
       }
@@ -101,147 +137,6 @@
       {
         "line": 2,
         "name": "@cadastro"
-      }
-    ]
-  },
-  {
-    "comments": [
-      {
-        "line": 1,
-        "value": "#language: pt"
-      }
-    ],
-    "line": 3,
-    "elements": [
-      {
-        "before": [
-          {
-            "result": {
-              "duration": 16213347,
-              "status": "passed"
-            },
-            "match": {
-              "location": "LoginSteps.before(Scenario)"
-            }
-          },
-          {
-            "result": {
-              "duration": 47698132,
-              "status": "passed"
-            },
-            "match": {
-              "location": "CadastroSteps.before(Scenario)"
-            }
-          },
-          {
-            "result": {
-              "duration": 1316074382,
-              "status": "passed"
-            },
-            "match": {
-              "location": "Hooks.beforeScenario()"
-            }
-          }
-        ],
-        "line": 8,
-        "name": "Login com sucesso",
-        "description": "",
-        "id": "login;login-com-sucesso",
-        "after": [
-          {
-            "result": {
-              "duration": 3117370,
-              "status": "passed"
-            },
-            "match": {
-              "location": "LoginSteps.finalizaPDF(Scenario)"
-            }
-          },
-          {
-            "result": {
-              "duration": 1463560207,
-              "status": "passed"
-            },
-            "match": {
-              "location": "LoginSteps.close(Scenario)"
-            }
-          }
-        ],
-        "type": "scenario",
-        "keyword": "Cenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 4752152373,
-              "status": "passed"
-            },
-            "line": 9,
-            "name": "que eu esteja na página de login da Pi",
-            "match": {
-              "location": "LoginSteps.que_eu_esteja_na_página_de_login_da_Pi()"
-            },
-            "keyword": "Dado "
-          },
-          {
-            "result": {
-              "duration": 1360596275,
-              "status": "passed"
-            },
-            "line": 10,
-            "name": "eu insiro meu e-mail cadastrado",
-            "match": {
-              "location": "LoginSteps.eu_insiro_meu_e_mail_cadastrado()"
-            },
-            "keyword": "Quando "
-          },
-          {
-            "result": {
-              "duration": 1005144848,
-              "status": "passed"
-            },
-            "line": 11,
-            "name": "minha senha",
-            "match": {
-              "location": "LoginSteps.minha_senha()"
-            },
-            "keyword": "E "
-          },
-          {
-            "result": {
-              "duration": 3216823535,
-              "status": "passed"
-            },
-            "line": 12,
-            "name": "clico no botão de Login",
-            "match": {
-              "location": "LoginSteps.clico_no_botão_de_Login()"
-            },
-            "keyword": "E "
-          },
-          {
-            "result": {
-              "duration": 1912982073,
-              "status": "passed"
-            },
-            "line": 13,
-            "name": "eu devo logar com sucesso na aplicação",
-            "match": {
-              "location": "LoginSteps.eu_devo_logar_com_sucesso_na_aplicação()"
-            },
-            "keyword": "Então "
-          }
-        ]
-      }
-    ],
-    "name": "Login",
-    "description": "Como usuário Pi\nQuero realizar login na aplicação web\nPara realizar minhas tarefas",
-    "id": "login",
-    "keyword": "Funcionalidade",
-    "uri": "src/test/java/Features/login.feature",
-    "tags": [
-      {
-        "line": 2,
-        "name": "@login"
       }
     ]
   }
