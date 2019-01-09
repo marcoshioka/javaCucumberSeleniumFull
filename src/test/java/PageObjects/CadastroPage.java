@@ -26,7 +26,7 @@ public class CadastroPage extends Drivers {
 	
 	public String urlCadastro = "https://uat-green.cs96.force.com/green/s/login/SelfRegister";
 	
-	public String nome = faker.name().fullName();
+	public String nome = faker.name().firstName();
 	
 	public String cadastroDado1 = "E que eu esteja na pagina de cadastro da Pi";
 	public String cadastroQuando1 = "Quando eu envio dados validos de e-mail com senha";

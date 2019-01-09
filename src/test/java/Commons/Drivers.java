@@ -136,7 +136,7 @@ public class Drivers {
 
 	}
 
-	protected static void waitForElementToBeVisible(By elemento) {
+	public static void waitForElementToBeVisible(By elemento) {
 		final WebDriverWait wait = new WebDriverWait(DRIVER, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 	}
@@ -150,7 +150,7 @@ public class Drivers {
 		DRIVER.navigate().refresh();
 	}
 
-	protected static void sendKeys(By elemento, String keys) {
+	public static void sendKeys(By elemento, String keys) {
 		DRIVER.findElement(elemento).sendKeys(keys);
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
@@ -162,7 +162,7 @@ public class Drivers {
 
 	}
 
-	protected static void click(By elemento) {
+	public static void click(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		e.click();

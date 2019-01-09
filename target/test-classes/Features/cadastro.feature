@@ -13,5 +13,7 @@ Funcionalidade: Cadastro
     Quando eu envio nome valido com e-mail
     E valido a informação do e-mail recebido para cadastro
     E insiro informações válidas de senha 
-    #E clico no botão de Login
-    #Então eu devo logar com sucesso na aplicação
+    E confirmo que a senha é criada com sucesso
+    E insiro CPF
+    E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil
+    E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade

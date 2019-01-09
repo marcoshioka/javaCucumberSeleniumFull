@@ -12,7 +12,7 @@
         "before": [
           {
             "result": {
-              "duration": 181643489,
+              "duration": 217326893,
               "status": "passed"
             },
             "match": {
@@ -21,7 +21,7 @@
           },
           {
             "result": {
-              "duration": 285673547,
+              "duration": 432812097,
               "status": "passed"
             },
             "match": {
@@ -30,7 +30,7 @@
           },
           {
             "result": {
-              "duration": 2255901912,
+              "duration": 2337526552,
               "status": "passed"
             },
             "match": {
@@ -45,7 +45,7 @@
         "after": [
           {
             "result": {
-              "duration": 6095937,
+              "duration": 8096951,
               "status": "passed"
             },
             "match": {
@@ -54,7 +54,7 @@
           },
           {
             "result": {
-              "duration": 1161356283,
+              "duration": 1188235225,
               "status": "passed"
             },
             "match": {
@@ -67,7 +67,7 @@
         "steps": [
           {
             "result": {
-              "duration": 4922447600,
+              "duration": 6114597899,
               "status": "passed"
             },
             "line": 11,
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 4330260250,
+              "duration": 4580098631,
               "status": "passed"
             },
             "line": 12,
@@ -91,7 +91,7 @@
           },
           {
             "result": {
-              "duration": 1414224538,
+              "duration": 1492986728,
               "status": "passed"
             },
             "line": 13,
@@ -103,7 +103,7 @@
           },
           {
             "result": {
-              "duration": 15068150603,
+              "duration": 17665551932,
               "status": "passed"
             },
             "line": 14,
@@ -115,13 +115,61 @@
           },
           {
             "result": {
-              "duration": 6725655271,
+              "duration": 2884857696,
               "status": "passed"
             },
             "line": 15,
             "name": "insiro informações válidas de senha",
             "match": {
               "location": "CadastroSteps.insiro_informações_válidas_de_senha()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 6415034125,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "confirmo que a senha é criada com sucesso",
+            "match": {
+              "location": "CadastroSteps.confirmo_que_a_senha_é_criada_com_sucesso()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 3757697424,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "insiro CPF",
+            "match": {
+              "location": "CadastroSteps.insiro_CPF()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 1548832580,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil",
+            "match": {
+              "location": "CadastroSteps.as_informacoes_Nome_Completo_Data_de_nascimento_Sexo_Estado_civil()"
+            },
+            "keyword": "E "
+          },
+          {
+            "result": {
+              "duration": 5655051063,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "as informacoes Nome da Mãe, nome do pai, Nacionalidade, Estado, Cidade",
+            "match": {
+              "location": "CadastroSteps.as_informacoes_Nome_da_Mãe_nome_do_pai_Nacionalidade_Estado_Cidade()"
             },
             "keyword": "E "
           }

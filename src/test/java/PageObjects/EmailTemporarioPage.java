@@ -46,5 +46,7 @@ public class EmailTemporarioPage extends Drivers {
 		Drivers.jsClick(botaoConfirmeSeuEmail);
 		Reporter.addStepLog("Email confirmado com sucesso");
 	}
+	
+	
 
 }

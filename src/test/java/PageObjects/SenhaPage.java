@@ -24,6 +24,7 @@ public class SenhaPage extends Drivers {
 	protected static By mensagemBoasVindas = By.xpath("//h2[contains(text(), 'Olá')]");
 	
 	public String senhaQuando1 = "E insiro informações válidas de senha ";
+	public String senhaQuando2 = "E confirmo que a senha é criada com sucesso";
 	
 	private String senhaRandom = faker.number().digits(6);
 		
