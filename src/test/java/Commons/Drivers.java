@@ -1,7 +1,5 @@
 package Commons;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,16 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,24 +23,32 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.hp.lft.sdk.Keys;
 
+import Steps.Hooks;
+
 //import actions.ConsultoriaFileReaderActions;
 
 public class Drivers {
 
+	protected static Hooks hooks = new Hooks();
 	protected static WebDriver DRIVER;
 	protected static Logger log = Logger.getLogger(Drivers.class);
-	protected static CommonsPrint commonsPrint;
 	static String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
 			+ "\\files\\dadosTemporarios.txt";
 
-	protected static void accessDefined(String driver) {
+	protected static void accessDefined(String driver) throws IOException {
 		switch (driver) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
@@ -76,8 +79,24 @@ public class Drivers {
 			break;
 		case "edge":
 			System.setProperty("webdriver.edge.driver", "./driver/MicrosoftWebDriver.exe");
-			EdgeOptions optionsEdge = new EdgeOptions();
-			DRIVER = new EdgeDriver(optionsEdge);
+			EdgeOptions edgeOptions = new EdgeOptions();
+			edgeOptions.setCapability("InPrivate", true);
+			DRIVER = new EdgeDriver(edgeOptions);
+			DRIVER.manage().window().maximize();
+			break;
+		case "ie":
+			System.setProperty("webdriver.ie.driver", "./driver/IEDriverServer.exe");
+			//options.addArguments(
+			//"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
+			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability (InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+			DRIVER = new InternetExplorerDriver(capabilities);
+			DRIVER.manage().window().maximize();
+			break;
+		case "safari":
+			 SafariOptions safariOptions = new SafariOptions();
+			 safariOptions.setUseCleanSession(true); //if you wish safari to forget session everytime
+			 DRIVER = new SafariDriver(safariOptions); 	
 			break;
 		}
 	}
@@ -86,9 +105,10 @@ public class Drivers {
 		DRIVER.get(url);
 	}
 
-	protected static String getBrowserName() {
-		return DRIVER.toString();
-
+	protected String getBrowserName() {
+		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
+	    return cap.getBrowserName().toUpperCase();
+	    
 	}
 
 	public static String coletarValue(By elemento) throws Throwable {
@@ -149,6 +169,10 @@ public class Drivers {
 	protected static void refresh() {
 		DRIVER.navigate().refresh();
 	}
+	
+	protected static void deleteCookies() {
+		DRIVER.manage().deleteAllCookies();
+	}
 
 	public static void sendKeys(By elemento, String keys) {
 		DRIVER.findElement(elemento).sendKeys(keys);
@@ -200,12 +224,7 @@ public class Drivers {
 		DRIVER.close();
 	}
 
-	protected static void presentText(By elementWithSomeText, String nameExpected) {
-		String nameCatched = sleepAndFindElement(3, elementWithSomeText).getText();
-		assertTrue("Atributo presente: " + nameCatched + ", é divergente do esperado: " + nameExpected,
-				nameCatched.contains(nameExpected));
-	}
-
+	
 	protected static void closeWindow() {
 		DRIVER.quit();
 		log.info("Turn off chrome browser");
@@ -259,69 +278,6 @@ public class Drivers {
 		}
 	}
 
-	// Sleep a while and find ONLY ONE element
-	protected static WebElement sleepAndFindElement(int timeForWait, By checkElementVisibility) {
-		int counter = 1;
-		WebElement elementFinded = null;
-		while (counter <= timeForWait) {
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				elementFinded = DRIVER.findElement(checkElementVisibility);
-				if (elementFinded.isDisplayed() == true) {
-					log.info(
-							"ELEMENTO (" + checkElementVisibility.toString() + ") ENCONTRADO NA TENTATIVA: " + counter);
-				} else {
-					ElementNotVisibleException elementNotDisplayed = new ElementNotVisibleException(null);
-					throw elementNotDisplayed;
-				}
-				break;
-			} catch (Exception error) {
-				log.info(
-						"ELEMENTO (" + checkElementVisibility.toString() + ") NÃO ENCONTRADO NA TENTATIVA: " + counter);
-				error.getMessage();
-				counter += 1;
-			}
-		}
-		if (counter > timeForWait) {
-			log.info("========> TIMEOUT NA LOCALIZAÇÃO DO ELEMENTO (" + checkElementVisibility.toString() + ")");
-			CommonsPrint.takeScreenShot(1, null);
-			closeWindow();
-			TimeoutException timeOut = new TimeoutException();
-			throw timeOut;
-		} else {
-			return elementFinded;
-		}
-	}
-
-	// Sleep a while and find AN ARRAY of elements
-	protected static List<WebElement> sleepAndFindArrayOfElements(int timeForWait, By checkElementsVisibility) {
-		int counter = 1;
-		List<WebElement> elementsFinded = null;
-		while (counter <= timeForWait) {
-			try {
-				TimeUnit.SECONDS.sleep(1);
-				elementsFinded = DRIVER.findElements(checkElementsVisibility);
-				log.info("ELEMENTOS (" + checkElementsVisibility.toString() + ") ENCONTRADOS NA TENTATIVA: " + counter);
-				break;
-			} catch (Exception error) {
-				log.info("========> ELEMENTOS (" + checkElementsVisibility.toString()
-						+ ") NÃO ENCONTRADOS NA TENTATIVA: " + counter);
-				error.printStackTrace();
-				counter += 1;
-			}
-		}
-		if (counter > timeForWait) {
-			log.error("========> TIMEOUT NA LOCALIZAÇÃO DOS ELEMENTOS (" + checkElementsVisibility.toString() + ")");
-			CommonsPrint.takeScreenShot(1, null);
-			closeWindow();
-			TimeoutException timeOut = new TimeoutException();
-			throw timeOut;
-		} else {
-			for (WebElement allFinded : elementsFinded) {
-				log.info("ELEMENTOS " + allFinded.toString() + " COM VISIBILIDADE: " + allFinded.isDisplayed());
-			}
-			return elementsFinded;
-		}
-	}
-
+	
+	
 }

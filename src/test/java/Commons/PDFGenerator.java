@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 //import javax.ws.rs.core.Request;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.test.context.TestContext;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -49,7 +51,7 @@ public class PDFGenerator extends Drivers {
 	public Hooks hooks = new Hooks();
 	private Result result;
 	public Drivers driv = new Drivers();
-
+	
 	public void geraPDF(Scenario scenario) {
 		try {
 
@@ -173,9 +175,7 @@ public class PDFGenerator extends Drivers {
 		String nameOS = "os.name";
 		document.add(new Paragraph("Sistema operacional: " + System.getProperty(nameOS), font));
 
-		//Drivers driv = new Drivers();
-		
-		//document.add(new Paragraph("Browser: " + driv.getBrowser(), font));
+		document.add(new Paragraph("Browser: " + hooks.coletaNomeBrowser(), font));
 
 		/*if (scenario.getStatus() == "passed") {
 			Font color = new Font();

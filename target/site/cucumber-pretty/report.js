@@ -19,15 +19,11 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 217326893,
+  "duration": 1908185530,
   "status": "passed"
 });
 formatter.before({
-  "duration": 432812097,
-  "status": "passed"
-});
-formatter.before({
-  "duration": 2337526552,
+  "duration": 594100651,
   "status": "passed"
 });
 formatter.scenario({
@@ -80,78 +76,78 @@ formatter.step({
 });
 formatter.step({
   "line": 19,
-  "name": "as informacoes Nome da Mãe, nome do pai, Nacionalidade, Estado, Cidade",
+  "name": "as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade",
   "keyword": "E "
 });
 formatter.match({
   "location": "CadastroSteps.que_eu_tenha_um_email_para_cadastro()"
 });
 formatter.result({
-  "duration": 6114597899,
+  "duration": 7113989825,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.que_eu_esteja_na_pagina_de_cadastro_da_Pi()"
 });
 formatter.result({
-  "duration": 4580098631,
+  "duration": 4215488561,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.eu_envio_nome_valido_com_e_mail()"
 });
 formatter.result({
-  "duration": 1492986728,
+  "duration": 1727403379,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.valido_a_informação_do_e_mail_recebido_para_cadastro()"
 });
 formatter.result({
-  "duration": 17665551932,
+  "duration": 16991007583,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.insiro_informações_válidas_de_senha()"
 });
 formatter.result({
-  "duration": 2884857696,
+  "duration": 2829322301,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.confirmo_que_a_senha_é_criada_com_sucesso()"
 });
 formatter.result({
-  "duration": 6415034125,
+  "duration": 4593463350,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.insiro_CPF()"
 });
 formatter.result({
-  "duration": 3757697424,
+  "duration": 2957339757,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.as_informacoes_Nome_Completo_Data_de_nascimento_Sexo_Estado_civil()"
 });
 formatter.result({
-  "duration": 1548832580,
+  "duration": 1594691504,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.as_informacoes_Nome_da_Mãe_nome_do_pai_Nacionalidade_Estado_Cidade()"
 });
 formatter.result({
-  "duration": 5655051063,
+  "duration": 3600924086,
   "status": "passed"
 });
 formatter.after({
-  "duration": 8096951,
+  "duration": 6347620,
   "status": "passed"
 });
 formatter.after({
-  "duration": 1188235225,
+  "duration": 1152437404,
   "status": "passed"
 });
 });

@@ -13,9 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.cucumber.listener.Reporter;
 
@@ -35,10 +37,16 @@ public class Hooks extends Drivers {
 	 * Método para iniciar o driver
 	 * 
 	 * @author Marcos Ribeiro Hioka
+	 * @throws IOException 
 	 */
-	 @Before("@login, @cadastro") 
-	 public void beforeScenario() {
+	 @Before(value = "@login, @cadastro", order = 0) 
+	 public void beforeScenario() throws IOException {
 		 accessDefined("chrome");
+		 Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
+		 String browserName = cap.getBrowserName().toLowerCase();
+		 System.out.println(browserName);
+		 hooks.salvaNomeBrowser(browserName);
+		 
 	 }
 	
 
@@ -114,6 +122,30 @@ public class Hooks extends Drivers {
 	
 	public String coletaDados() throws IOException {
 		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\dadosTemporarios.txt";
+		BufferedReader bw = new BufferedReader(new FileReader(temp));
+    	String text = bw.readLine();
+    	bw.close();
+    	return text;
+    				
+	}
+	
+	public String getBrowserName() {
+		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
+	    return cap.getBrowserName().toUpperCase();
+	    
+	}
+	
+	
+	public void salvaNomeBrowser(String dadoSalvo) throws IOException {
+		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\driver.txt";
+		BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+    	bw.write(dadoSalvo);
+    	bw.close();
+    				
+	}
+	
+	public String coletaNomeBrowser() throws IOException {
+		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\driver.txt";
 		BufferedReader bw = new BufferedReader(new FileReader(temp));
     	String text = bw.readLine();
     	bw.close();

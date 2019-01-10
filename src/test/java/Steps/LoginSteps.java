@@ -14,7 +14,7 @@ public class LoginSteps extends LoginPage {
 	private Hooks hooks = new Hooks();
 	private PDFGenerator pdfGenerator = new PDFGenerator();
 	
-	@Before
+	@Before(value = "@login", order = 1)
 	public void before(Scenario scenario) throws Exception {
 		pdfGenerator.iniciaPDF(scenario);
 	}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="54.298706">
-    <testcase classname="Cadastro" name="Cadastro full" time="54.298706">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="49.284702">
+    <testcase classname="Cadastro" name="Cadastro full" time="49.284702">
         <system-out>
             <![CDATA[Dado que eu tenha um email para cadastro....................................passed
 E que eu esteja na pagina de cadastro da Pi.................................passed
@@ -10,7 +10,7 @@ E insiro informações válidas de senha.......................................p
 E confirmo que a senha é criada com sucesso.................................passed
 E insiro CPF................................................................passed
 E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil......passed
-E as informacoes Nome da Mãe, nome do pai, Nacionalidade, Estado, Cidade....passed
+E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade....passed
 ]]>
         </system-out>
     </testcase>
