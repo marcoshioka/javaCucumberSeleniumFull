@@ -60,7 +60,7 @@ public class CpfPage extends Drivers{
 		Drivers.waitForElementToBeVisible(campoDataNascimento);
 		String data = GeradorDeData.randomDOB();
 		Drivers.sendKeys(campoDataNascimento, data);
-		Reporter.addStepLog("Data " + data + " inserido com sucesso.");
+		Reporter.addStepLog("Data " + data + " inserida com sucesso.");
 	}
 	
 	public void selecionaSexoMasculino() throws IOException{

@@ -194,7 +194,7 @@ public class Drivers {
 		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
 	}
 
-	protected static void jsClick(By elemento) {
+	public static void jsClick(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
@@ -205,7 +205,7 @@ public class Drivers {
 		// "");
 	}
 
-	protected static void marcarElemento(By elemento) {
+	public static void marcarElemento(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;

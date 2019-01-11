@@ -6,6 +6,8 @@ import PageObjects.CpfPage;
 import PageObjects.EmailTemporarioPage;
 import PageObjects.SenhaPage;
 import PageObjects.DadosPage;
+import PageObjects.DocumentoPage;
+import PageObjects.EnderecoPage;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -20,6 +22,8 @@ public class CadastroSteps {
 	private SenhaPage SenhaPage = new SenhaPage();
 	private CpfPage CpfPage = new CpfPage();
 	private DadosPage DadosPage = new DadosPage();
+	private EnderecoPage EnderecoPage = new EnderecoPage();
+	private DocumentoPage DocumentoPage = new DocumentoPage();
 	private Hooks hooks = new Hooks();
 	private PDFGenerator pdfGenerator = new PDFGenerator();
 
@@ -110,14 +114,36 @@ public class CadastroSteps {
 
 	@Dado("^as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade$")
 	public void as_informacoes_Nome_da_Mãe_nome_do_pai_Nacionalidade_Estado_Cidade() throws Throwable {
-	    DadosPage.insereNomeMae();
-	    DadosPage.insereNomePai();
-	    DadosPage.selecionaNacionalidadeBrasileiroNato();
-	    DadosPage.selecionaEstadoSP();
-	    DadosPage.selecionaCidadeSP();
-	    DadosPage.clicaSeguir();
-	    pdfGenerator.conteudoPDF(DadosPage.dadosQuando1);
+		DadosPage.insereNomeMae();
+		DadosPage.insereNomePai();
+		DadosPage.selecionaNacionalidadeBrasileiroNato();
+		DadosPage.selecionaEstadoSP();
+		DadosPage.selecionaCidadeSP();
+		DadosPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(DadosPage.dadosQuando1);
+		hooks.getEvidence();
+	}
+
+	@Dado("^as informacoes de endereço$")
+	public void as_informacoes_de_endereço() throws Throwable {
+		EnderecoPage.insereCep();
+		EnderecoPage.insereNumero();
+		EnderecoPage.confirmaEnderecoDeCorrespondencia();
+		EnderecoPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(EnderecoPage.enderecoQuando1);
 		hooks.getEvidence();
 	}
 	
+	@Dado("^insira as informações de CNH$")
+	public void insira_as_informações_de_CNH() throws Throwable {
+	    DocumentoPage.selecionaOpcaoCNH();
+	    DocumentoPage.insereNumeroDoRegistroCNH();
+	    DocumentoPage.selecionaOrgaoEmissorDetran();
+	    DocumentoPage.insereDataEmissaoCNH();
+	    DocumentoPage.selecionaEstadoEmitenteSP();
+	    DocumentoPage.clicaSeguir();
+	    pdfGenerator.conteudoPDF(DocumentoPage.documentoQuando1);
+		hooks.getEvidence();
+	}
+
 }

@@ -17,3 +17,5 @@ Funcionalidade: Cadastro
     E insiro CPF
     E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil
     E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade
+    E as informacoes de endereço
+    E insira as informações de CNH
