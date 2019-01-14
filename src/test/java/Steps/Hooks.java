@@ -46,7 +46,7 @@ public class Hooks extends Drivers {
 		 String browserName = cap.getBrowserName().toLowerCase();
 		 System.out.println(browserName);
 		 hooks.salvaNomeBrowser(browserName);
-		 
+	
 	 }
 	
 
@@ -75,11 +75,18 @@ public class Hooks extends Drivers {
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yy" + "_" + "h-m-s");
 		Date date = new Date();
 		File sourcePath = ((TakesScreenshot) Drivers.DRIVER).getScreenshotAs(OutputType.FILE);
-		File destinationPath = new File(System.getProperty("user.dir")
+		/*File destinationPath = new File(System.getProperty("user.dir")
 				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");
 		FileUtils.copyFile(sourcePath, destinationPath);
 		Reporter.addScreenCaptureFromPath(System.getProperty("user.dir")
-				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");
+				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");*/
+		File destinationPath = new File(System.getProperty("user.dir")
+				+ "%TEMP%" + dateFormat.format(date) + ".png");
+		FileUtils.copyFile(sourcePath, destinationPath);
+		Reporter.addScreenCaptureFromPath(System.getProperty("user.dir")
+				+ "%TEMP%" + dateFormat.format(date) + ".png");
+		/*FileUtils.copyFile(sourcePath, new File("evidenceScreenshot.png"));
+		Reporter.addScreenCaptureFromPath(System.getPro*/
 	}
 
 	public String coletaDadoTemporario() throws IOException {

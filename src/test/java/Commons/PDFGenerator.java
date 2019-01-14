@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 //import javax.ws.rs.core.Request;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.wicket.util.file.Folder;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -140,7 +141,8 @@ public class PDFGenerator extends Drivers {
 				
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
-		PdfWriter.getInstance(document, new FileOutputStream(featureName + ".pdf"));
+		new Folder("./Evidences/" + featureName).mkdirs();
+		PdfWriter.getInstance(document, new FileOutputStream(("./evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
