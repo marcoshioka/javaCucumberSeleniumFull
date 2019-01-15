@@ -51,7 +51,7 @@ spec:
          
           script {
             
-             sh (script: "cp /usr/local/bin/chromedriver /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/driver/")
+             sh (script: "cp /usr/local/bin/chromedriver /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/")
              
           }
         }
@@ -67,7 +67,7 @@ spec:
          
             script {
             
-             sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/driver/; ls")
+             sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/; ls")
              
           }
         }
@@ -78,12 +78,12 @@ spec:
       steps {
         echo "Branch is ${env.BRANCH_NAME}..."
        
-          echo "Projeto de testes com Selenium - /RelatorioTest/ArquivoPDFRelatorio/Evidences/ "
+          echo "Projeto de testes com Selenium - /RelatorioTest/ArquivoPDFRelatorio/evidences/ "
         container("qa-slave") {
          
           script {
             
-             sh (script: "mkdir -p /RelatorioTest/ArquivoPDFRelatorio/Evidences/ cd /RelatorioTest/ArquivoPDFRelatorio/Evidences/; ls")
+             sh (script: "mkdir -p /RelatorioTest/ArquivoPDFRelatorio/evidences/ cd /RelatorioTest/ArquivoPDFRelatorio/evidences/; ls")
              
           }
         }
@@ -96,7 +96,7 @@ spec:
         container("qa-slave") {
           echo "Projeto de testes com Selenium"
           script {
-    sh (script: "mvn -Dtest=scenarios.cadastro.Ct2759CadastroNaoEVoce -Dplatform=WEB-CHROME -DinputType=EXCEL -DautomationTool=SELENIUM test; cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls")
+    sh (script: "mvn test -Dplatform=WEB-CHROME -DinputType=EXCEL -DautomationTool=SELENIUM test; cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls")
             
           }
         }
@@ -113,7 +113,7 @@ spec:
               
             script {
             
-            sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
+            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
           }
           
           archiveArtifacts artifacts: '**/Evidencias.tar.gz', fingerprint: true 
@@ -126,7 +126,7 @@ spec:
          
            script {
             
-            sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
+            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; pwd ; ls -la; ")
           }
            archiveArtifacts artifacts: '**/Evidencias.tar.gz', fingerprint: true 
        	 
@@ -138,7 +138,7 @@ spec:
        	            
             script {
             
-             sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/;  pwd ; ls -la;")
+             sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/;  pwd ; ls -la;")
              
           }
        	 
