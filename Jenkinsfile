@@ -113,7 +113,7 @@ spec:
               
             script {
             
-            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
+            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/Evidences/; pwd ; ls -la; ")
           }
           
           archiveArtifacts artifacts: '**/Evidencias.tar.gz', fingerprint: true 
