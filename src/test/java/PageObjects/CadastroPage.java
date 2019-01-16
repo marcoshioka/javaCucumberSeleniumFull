@@ -6,11 +6,9 @@ import org.openqa.selenium.By;
 
 import com.cucumber.listener.Reporter;
 import com.github.javafaker.Faker;
-import com.github.javafaker.Pokemon;
 
 import Commons.Drivers;
 import Steps.Hooks;
-import net.masterthought.cucumber.json.Hook;
 
 public class CadastroPage extends Drivers {
 
@@ -27,11 +25,6 @@ public class CadastroPage extends Drivers {
 	public String urlCadastro = "https://uat-green.cs96.force.com/green/s/login/SelfRegister";
 	
 	public String nome = faker.name().firstName();
-	
-	public String cadastroDado1 = "E que eu esteja na pagina de cadastro da Pi";
-	public String cadastroQuando1 = "Quando eu envio dados validos de e-mail com senha";
-	public String cadastroE1 = "E valido a informação do e-mail recebido para cadastro";
-	
 	
 	public void irParaCadastro() throws Throwable {
 		Reporter.addStepLog("Acessando a página de login");

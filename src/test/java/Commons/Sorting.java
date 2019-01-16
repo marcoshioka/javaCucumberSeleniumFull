@@ -8,23 +8,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Sorting {
-	
-	public void sort () throws IOException{
+
+	public void sort(String filePath) throws IOException {
 		ArrayList<String> rows = new ArrayList<String>();
-	    BufferedReader reader = new BufferedReader(new FileReader("./files/listaCeps.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
-	    String s;
-	    while((s = reader.readLine())!=null)
-	        rows.add(s);
+		String s;
+		while ((s = reader.readLine()) != null)
+			rows.add(s);
 
-	    Collections.shuffle(rows);
+		Collections.shuffle(rows);
 
-	    FileWriter writer = new FileWriter("./files/cepsSorteados.txt");
-	    for(String cur: rows)
-	        writer.write(cur+"\n");
+		FileWriter writer = new FileWriter(filePath);
+		for (String cur : rows)
+			writer.write(cur + "\n");
 
-	    reader.close();
-	    writer.close();
-		}
+		reader.close();
+		writer.close();
+	}
 
 }

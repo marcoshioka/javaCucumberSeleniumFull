@@ -1,20 +1,20 @@
 package PageObjects;
 
+import java.io.RandomAccessFile;
+
 import org.openqa.selenium.By;
 
 import com.cucumber.listener.Reporter;
-import com.github.javafaker.Faker;
 
 import Commons.Drivers;
+import Commons.Sorting;
 import Steps.Hooks;
-import cucumber.api.java.pt.Dado;
 
 public class SenhaPage extends Drivers {
 
 	Hooks hooks = new Hooks();
-
-	private Faker faker = new Faker();
-
+	Sorting sorting = new Sorting();
+	
 	protected static By titulo = By.xpath("//span[contains(text(), 'Senha')]");
 	protected static By senha = By.id("password");
 	protected static By confirmaSenha = By.id("password2");
@@ -22,12 +22,8 @@ public class SenhaPage extends Drivers {
 	protected static By mensagemConfirmacao = By.xpath("//h1[contains(text(), 'Senha criada com sucesso!')]");
 	protected static By botaoAcessar = By.xpath("//button[@title = 'Acessar']");
 	protected static By mensagemBoasVindas = By.xpath("//h2[contains(text(), 'Olá')]");
+
 	
-	public String senhaQuando1 = "E insiro informações válidas de senha ";
-	public String senhaQuando2 = "E confirmo que a senha é criada com sucesso";
-	
-	private String senhaRandom = faker.number().digits(6);
-		
 	public void irParaAbaSenha() throws Throwable {
 		Drivers.switchToOtherTab(1);
 	}
@@ -35,6 +31,10 @@ public class SenhaPage extends Drivers {
 	public void enviarDadosSenha() throws Throwable {
 		Reporter.addStepLog("Confirmando dados de senha");
 		Drivers.waitForElementToBeVisible(titulo);
+		sorting.sort("./files/listaSenhas.txt");
+		RandomAccessFile random = new RandomAccessFile("./files/listaSenhas.txt", "r");
+		String senhaRandom = random.readLine();
+		random.close();
 		Drivers.sendKeys(senha, senhaRandom);
 		hooks.salvaDados(senhaRandom);
 		String senhaSalva = hooks.coletaDados();

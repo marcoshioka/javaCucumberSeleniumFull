@@ -18,4 +18,10 @@ Funcionalidade: Cadastro
     E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil
     E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade
     E as informacoes de endereço
-    E insira as informações de CNH
+    E insiro as informações de CNH
+    E insiro as informações de contato
+    E seleciono Tentar mais tarde para envio do SMS
+    E informo que não sou politicamente exposto
+    E informo minha profissão
+    E informo minha renda, sem patrimônio
+    E informo Não em todos os itens de Declarações e Autorizações

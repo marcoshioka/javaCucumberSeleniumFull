@@ -34,6 +34,7 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
@@ -47,7 +48,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Dec 19, 2018 03:00:04 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Jan 14, 2019 02:25:10 PM</span>
 				</a>
 			</li>
 			<li>
@@ -72,7 +73,10 @@
 					<i class='material-icons'>warning</i> Status
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
-										<li class='divider'></li>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
 			</div>
@@ -85,6 +89,7 @@
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
 					<li><a href='#'>@login</a></li>
+					<li><a href='#'>@cadastro</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -132,14 +137,28 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='5.556%'><span class='strong'>1</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='5.556%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='88.889%'>16</span> others
 				</div>
 			</div>
 		</div>
 		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='5.263%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='94.737%'>18</span> others
+				</div>
+			</div>
+		</div>
 		
 	</div>
 </div>
@@ -154,14 +173,14 @@
 				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Login</span>
-						<span class='test-time'>Dec 19, 2018 03:00:04 PM</span>
+						<span class='test-time'>Jan 14, 2019 02:25:10 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Dec 19, 2018 03:00:04 PM</span>
-	<span class='label end-time'>Dec 19, 2018 03:00:04 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+2ms</span>
+	<span class='label start-time'>Jan 14, 2019 02:25:10 PM</span>
+	<span class='label end-time'>Jan 14, 2019 02:25:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+63ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='category-list'>
@@ -172,11 +191,611 @@
 		
 				<li class='node level-1 leaf pass' status='pass' test-id='2'>
 					<div class='collapsible-header'>
-						<h5 class='node-name'>Esquema do Cenario: Perfil Suitability</h5>
-						<span class="node-time label grey lighten-1 white-text">Dec 19, 2018 03:00:04 PM</span>
-						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<h5 class='node-name'>Esquema do Cenario: Login invalido</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:10 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+3ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='info'>
+													<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+													<td class='timestamp'>2:25:10 PM</td>
+													<td class='step-details'><table><tr><td>email</td><td>senha</td></tr><tr><td>test@failed.com</td><td>198273</td></tr><tr><td>ranehe@mail-2-you.com</td><td>084261</td></tr></table></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-1  skip' status='skip' test-id='3'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Scenario: Login invalido</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:12 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 2s+209ms</span>
+						<span class='test-status right skip'>skip</span>
+								<span class='category label white-text'>@login</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2 leaf skip' status='skip' test-id='4'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Quando eu insiro um "test@failed.com" não cadastrado</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:12 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:12 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='5'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E uma "198273" qualquer</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:12 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:12 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='6'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Então eu não devo logar</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:12 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:12 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-12.png' width='10%' src='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-12.png' data-src='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-12.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-1  skip' status='skip' test-id='7'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Scenario: Login invalido</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:15 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 1s+360ms</span>
+						<span class='test-status right skip'>skip</span>
+								<span class='category label white-text'>@login</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2 leaf skip' status='skip' test-id='8'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Quando eu insiro um "ranehe@mail-2-you.com" não cadastrado</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:15 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:15 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='9'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E uma "084261" qualquer</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:15 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:15 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='10'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Então eu não devo logar</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:15 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:15 PM</td>
+													<td class='step-details'>undefined</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-15.png' width='10%' src='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-15.png' data-src='C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium/target/test-report/extent-report/screenshots/14.01.19_2-25-15.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+	</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active has-leaf fail' status='fail' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>Cadastro</span>
+						<span class='test-time'>Jan 14, 2019 02:25:17 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jan 14, 2019 02:25:17 PM</span>
+	<span class='label end-time'>Jan 14, 2019 02:25:24 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+276ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>@cadastro</span>
+			</div>
+	</div>
+	<ul class='collapsible node-list' data-collapsible='accordion'>
+		
+				<li class='node level-1  fail' status='fail' test-id='12'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Scenario: Cadastro full</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 7s+276ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2 leaf fail' status='fail' test-id='13'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Dado que eu tenha um email para cadastro</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 5s+422ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='info'>
+													<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+													<td class='timestamp'>2:25:19 PM</td>
+													<td class='step-details'>Acessando a página do TempMail</td>
+												</tr>
+												<tr class='log' status='fail'>
+													<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'><pre>org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615291 (ec3682e3c9061c10f26ea9e5cdcf3c53f3f74387),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'
+System info: host: 'SAO-D1CY9R2', ip: '10.0.75.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615291 (ec3682e3c9061c..., userDataDir: C:\Users\mribeirh\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62346}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: 4f9f7ca06a2800f98009bfd0c8281c2d
+*** Element info: {Using=id, value=mail}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:397)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementsById(RemoteWebDriver.java:420)
+	at org.openqa.selenium.By$ById.findElements(By.java:210)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:358)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:643)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:640)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	at Commons.Drivers.waitForElementToBeClickable(Drivers.java:155)
+	at PageObjects.EmailTemporarioPage.irParaUrlTempMail(EmailTemporarioPage.java:27)
+	at Steps.CadastroSteps.que_eu_tenha_um_email_para_cadastro(CadastroSteps.java:52)
+	at ✽.Dado que eu tenha um email para cadastro(cadastro.feature:11)
+</pre></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='14'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E que eu esteja na pagina de cadastro da Pi</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='15'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>Quando eu envio nome valido com e-mail</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='16'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E valido a informação do e-mail recebido para cadastro</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='17'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E insiro informações válidas de senha</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='18'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E confirmo que a senha é criada com sucesso</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='19'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E insiro CPF</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='20'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='21'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='22'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E as informacoes de endereço</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+				<li class='node level-2 leaf skip' status='skip' test-id='23'>
+					<div class='collapsible-header'>
+						<h5 class='node-name'>E insira as informações de CNH</h5>
+						<span class="node-time label grey lighten-1 white-text">Jan 14, 2019 02:25:24 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='skip'>
+													<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+													<td class='timestamp'>2:25:24 PM</td>
+													<td class='step-details'>skipped</td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
 				</li>
 	</ul>
 					</div>
@@ -236,12 +855,57 @@
 						<span class='category-name'>@login</span>
 						<span class='category-status right'>
 							<span class='label pass'>1</span>
+							<span class='label others'>2</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
 							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
+							<span class='label yellow darken-2 white-text'>Others: 2</span>
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Jan 14, 2019 02:25:10 PM</td>
+										<td class='linked' test-id='1'>Login</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Jan 14, 2019 02:25:10 PM</td>
+										<td class='linked' test-id='3'>Login.Scenario: Login invalido</td>
+										<td><span class='test-status skip'>skip</span></td>
+									</tr>
+									<tr>
+										<td>Jan 14, 2019 02:25:14 PM</td>
+										<td class='linked' test-id='7'>Login.Scenario: Login invalido</td>
+										<td><span class='test-status skip'>skip</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>@cadastro</span>
+						<span class='category-status right'>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -256,9 +920,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Dec 19, 2018 03:00:04 PM</td>
-										<td class='linked' test-id='1'>Login</td>
-										<td><span class='test-status pass'>pass</span></td>
+										<td>Jan 14, 2019 02:25:17 PM</td>
+										<td class='linked' test-id='11'>Cadastro</td>
+										<td><span class='test-status fail'>fail</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -277,6 +941,104 @@
 	</div>
 </div>
 <!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.openqa.selenium.WebDriverException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Jan 14, 2019 02:25:18 PM</td>
+                                                        <td class='linked' test-id='13'>Cadastro.Scenario: Cadastro full.Dado que eu tenha um email para cadastro</td>
+                                                        <td><pre><pre>org.openqa.selenium.WebDriverException: chrome not reachable
+  (Session info: chrome=71.0.3578.98)
+  (Driver info: chromedriver=2.45.615291 (ec3682e3c9061c10f26ea9e5cdcf3c53f3f74387),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.7.1', revision: '8a0099a', time: '2017-11-06T21:01:39.354Z'
+System info: host: 'SAO-D1CY9R2', ip: '10.0.75.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.45.615291 (ec3682e3c9061c..., userDataDir: C:\Users\mribeirh\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62346}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 71.0.3578.98, webStorageEnabled: true}
+Session ID: 4f9f7ca06a2800f98009bfd0c8281c2d
+*** Element info: {Using=id, value=mail}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:397)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementsById(RemoteWebDriver.java:420)
+	at org.openqa.selenium.By$ById.findElements(By.java:210)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:358)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:881)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:643)
+	at org.openqa.selenium.support.ui.ExpectedConditions$22.apply(ExpectedConditions.java:640)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	at Commons.Drivers.waitForElementToBeClickable(Drivers.java:155)
+	at PageObjects.EmailTemporarioPage.irParaUrlTempMail(EmailTemporarioPage.java:27)
+	at Steps.CadastroSteps.que_eu_tenha_um_email_para_cadastro(CadastroSteps.java:52)
+	at ✽.Dado que eu tenha um email para cadastro(cadastro.feature:11)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -286,31 +1048,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>18</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>0</div>
+					<div class='panel-lead'>19</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Dec 19, 2018 03:00:04 PM</div>
+					<div class='panel-lead'>Jan 14, 2019 02:25:10 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Dec 19, 2018 03:00:04 PM</div>
+			 		<div class='panel-lead'>Jan 14, 2019 02:25:36 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>100ms</div>
+					<div class='panel-lead'>25,992ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -329,9 +1091,18 @@
 							<td>@login</td>
 							<td>1</td>
 							<td>0</td>
+							<td>2</td>
+							<td>
+									33.333%
+							</td>
+						</tr>
+						<tr>
+							<td>@cadastro</td>
+							<td>0</td>
+							<td>1</td>
 							<td>0</td>
 							<td>
-									100%
+									0%
 							</td>
 						</tr>
 					</table>
@@ -348,21 +1119,21 @@
 		<script>
 			var statusGroup = {
 				passParent: 1,
-				failParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
-				skipParent: 0,
-				exceptionsParent: 0,
+				skipParent: 16,
+				exceptionsParent: 17,
 				
 				passChild: 0,
-				failChild: 0,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
-				skipChild: 0,
-				infoChild: 0,
-				exceptionsChild: 0,
+				skipChild: 16,
+				infoChild: 2,
+				exceptionsChild: 17,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.cucumber.listener.Reporter;
 
 import Commons.Drivers;
+import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 
 public class Hooks extends Drivers {
@@ -31,24 +33,25 @@ public class Hooks extends Drivers {
 
 	private WebDriver driver;
 
+	// public Method method;
+
 	// private WebDriver driver;
 
 	/**
 	 * Método para iniciar o driver
 	 * 
 	 * @author Marcos Ribeiro Hioka
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	 @Before(value = "@login, @cadastro", order = 0) 
-	 public void beforeScenario() throws IOException {
-		 accessDefined("chrome");
-		 Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
-		 String browserName = cap.getBrowserName().toLowerCase();
-		 System.out.println(browserName);
-		 hooks.salvaNomeBrowser(browserName);
-	
-	 }
-	
+	@Before(value = "@login, @cadastro", order = 0)
+	public void beforeScenario() throws IOException {
+		accessDefined("chrome");
+		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
+		String browserName = cap.getBrowserName().toLowerCase();
+		System.out.println(browserName);
+		hooks.salvaNomeBrowser(browserName);
+
+	}
 
 	/**
 	 * Método responsável por fechar o browser, no fim da execução do teste
@@ -56,7 +59,7 @@ public class Hooks extends Drivers {
 	 * @author Marcos Ribeiro Hioka
 	 * @param driver
 	 */
-	public void closeBrowser() {
+	public void close() {
 		if (Drivers.DRIVER != null) {
 			Drivers.DRIVER.quit();
 		}
@@ -75,18 +78,22 @@ public class Hooks extends Drivers {
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yy" + "_" + "h-m-s");
 		Date date = new Date();
 		File sourcePath = ((TakesScreenshot) Drivers.DRIVER).getScreenshotAs(OutputType.FILE);
-		/*File destinationPath = new File(System.getProperty("user.dir")
+		File destinationPath = new File(System.getProperty("user.dir")
 				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");
 		FileUtils.copyFile(sourcePath, destinationPath);
 		Reporter.addScreenCaptureFromPath(System.getProperty("user.dir")
-				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");*/
-		File destinationPath = new File(System.getProperty("user.dir")
-				+ "%TEMP%" + dateFormat.format(date) + ".png");
-		FileUtils.copyFile(sourcePath, destinationPath);
-		Reporter.addScreenCaptureFromPath(System.getProperty("user.dir")
-				+ "%TEMP%" + dateFormat.format(date) + ".png");
-		/*FileUtils.copyFile(sourcePath, new File("evidenceScreenshot.png"));
-		Reporter.addScreenCaptureFromPath(System.getPro*/
+				+ "/target/test-report/extent-report/screenshots/" + dateFormat.format(date) + ".png");
+		/*
+		 * File destinationPath = new File(System.getProperty("user.dir") + "%TEMP%" +
+		 * dateFormat.format(date) + ".png"); FileUtils.copyFile(sourcePath,
+		 * destinationPath);
+		 * Reporter.addScreenCaptureFromPath(System.getProperty("user.dir") + "%TEMP%" +
+		 * dateFormat.format(date) + ".png");
+		 */
+		/*
+		 * FileUtils.copyFile(sourcePath, new File("evidenceScreenshot.png"));
+		 * Reporter.addScreenCaptureFromPath(System.getPro
+		 */
 	}
 
 	public String coletaDadoTemporario() throws IOException {
@@ -114,50 +121,77 @@ public class Hooks extends Drivers {
 
 	}
 
-	/*public String getBrowser() throws IOException {
-		return coletaDadoTemporario();
+	/*
+	 * public String getBrowser() throws IOException { return
+	 * coletaDadoTemporario();
+	 * 
+	 * }
+	 */
 
-	}*/
-	
 	public void salvaDados(String dadoSalvo) throws IOException {
 		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\dadosTemporarios.txt";
 		BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
-    	bw.write(dadoSalvo);
-    	bw.close();
-    				
+		bw.write(dadoSalvo);
+		bw.close();
+
 	}
-	
+
 	public String coletaDados() throws IOException {
 		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\dadosTemporarios.txt";
 		BufferedReader bw = new BufferedReader(new FileReader(temp));
-    	String text = bw.readLine();
-    	bw.close();
-    	return text;
-    				
+		String text = bw.readLine();
+		bw.close();
+		return text;
+
 	}
-	
+
 	public String getBrowserName() {
 		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
-	    return cap.getBrowserName().toUpperCase();
-	    
+		return cap.getBrowserName().toUpperCase();
+
 	}
-	
-	
+
 	public void salvaNomeBrowser(String dadoSalvo) throws IOException {
 		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\driver.txt";
 		BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
-    	bw.write(dadoSalvo);
-    	bw.close();
-    				
+		bw.write(dadoSalvo);
+		bw.close();
+
 	}
-	
+
 	public String coletaNomeBrowser() throws IOException {
 		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\driver.txt";
 		BufferedReader bw = new BufferedReader(new FileReader(temp));
-    	String text = bw.readLine();
-    	bw.close();
-    	return text;
-    				
+		String text = bw.readLine();
+		bw.close();
+		return text;
+
 	}
 
+	public String coletaNomeMetodo(Method method) throws IOException {
+		String temp = Paths.get("").toAbsolutePath().toString() + "\\files\\nomeMetodo.txt";
+		BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+		bw.write(method.getName());
+		BufferedReader br = new BufferedReader(new FileReader(temp));
+		String nome = br.readLine();
+		bw.close();
+		return nome;
+
+	}
+
+	public String name() {
+		class Local {
+		}
+		;
+		return Local.class.getEnclosingMethod().getName();
+	}
+
+	public void closeBrowser(Scenario scenario) throws IOException {
+		if (scenario.isFailed()) {
+			hooks.getEvidence();
+			hooks.close();
+		} else {
+			hooks.close();
+		}
+	}
 }

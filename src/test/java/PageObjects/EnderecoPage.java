@@ -22,8 +22,6 @@ public class EnderecoPage {
 
 	Faker faker = new Faker(new Locale("pt-BR"));
 
-	public String enderecoQuando1 = "E as informacoes de endereço";
-
 	protected static By titulo = By.xpath("//h2[contains(text(), 'mora')]");
 	protected static By campoCep = By.xpath("//input[@placeholder= 'CEP']");
 	protected static By campoNumero = By.xpath("//input[@placeholder= 'Número']");
@@ -33,8 +31,8 @@ public class EnderecoPage {
 	public void insereCep() throws IOException {
 		Reporter.addStepLog("Inserindo CEP");
 		Drivers.waitForElementToBeVisible(titulo);
-		sorting.sort();
-		RandomAccessFile random = new RandomAccessFile("./files/cepsSorteados.txt", "r");
+		sorting.sort("./files/listaCeps.txt");
+		RandomAccessFile random = new RandomAccessFile("./files/listaCeps.txt", "r");
 		String cep = random.readLine();
 		random.close();
 		Drivers.sendKeys(campoCep, cep);

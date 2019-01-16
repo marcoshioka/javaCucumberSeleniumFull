@@ -13,12 +13,19 @@ Funcionalidade: Login
     Então eu devo logar com sucesso na aplicação
 
     
-    #Cenario: Login invalido
-    #Dado que eu esteja na tela de login
-    #Quando eu realizo a inserção de 
-    #E senha
-    #E tento realizar o login
-    #Então eu não devo logar
+   Esquema do Cenario: Login invalido
+    Dado que eu esteja na página de login da Pi
+    Quando eu insiro um "<email>" não cadastrado
+    E uma "<senha>" qualquer
+    E clico no botão de Login
+    Então eu não devo logar
+    
+    Exemplos: 
+    |email									|senha	|
+    |test@failed.com				|198273	|
+    #|ranehe@mail-2-you.com	|084261 |
+    
+    
     
     #Cenario: Perfil Suitability
     #Dado que eu esteja logado 

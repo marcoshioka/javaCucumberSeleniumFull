@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -58,15 +60,17 @@ public class Drivers {
 			 */
 			/*
 			 * Map<String, String> mobileEmulation = new HashMap<>();
-			 * mobileEmulation.put("deviceName", "Nexus 5");
+			 * mobileEmulation.put("deviceName", "iPhone X");
 			 * options.setExperimentalOption("mobileEmulation", mobileEmulation);
 			 */
+
 			options.addArguments("--disable-notifications");
 			options.addArguments("disable-infobars");
 			options.addArguments("--print-to-pdf");
 			options.addArguments("--start-maximized");
-			//options.addArguments(
-					//"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
+			// options.addArguments(
+			// "--user-agent=Chrome/56.0.0.0 Mobile |
+			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DRIVER = new ChromeDriver(options);
 			break;
 		case "firefox":
@@ -86,17 +90,18 @@ public class Drivers {
 			break;
 		case "ie":
 			System.setProperty("webdriver.ie.driver", "./driver/IEDriverServer.exe");
-			//options.addArguments(
-			//"--user-agent=Chrome/56.0.0.0 Mobile | E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
+			// options.addArguments(
+			// "--user-agent=Chrome/56.0.0.0 Mobile |
+			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-			capabilities.setCapability (InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			DRIVER = new InternetExplorerDriver(capabilities);
 			DRIVER.manage().window().maximize();
 			break;
 		case "safari":
-			 SafariOptions safariOptions = new SafariOptions();
-			 safariOptions.setUseCleanSession(true); //if you wish safari to forget session everytime
-			 DRIVER = new SafariDriver(safariOptions); 	
+			SafariOptions safariOptions = new SafariOptions();
+			safariOptions.setUseCleanSession(true); // if you wish safari to forget session everytime
+			DRIVER = new SafariDriver(safariOptions);
 			break;
 		}
 	}
@@ -107,8 +112,8 @@ public class Drivers {
 
 	protected String getBrowserName() {
 		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
-	    return cap.getBrowserName().toUpperCase();
-	    
+		return cap.getBrowserName().toUpperCase();
+
 	}
 
 	public static String coletarValue(By elemento) throws Throwable {
@@ -157,7 +162,7 @@ public class Drivers {
 	}
 
 	public static void waitForElementToBeVisible(By elemento) {
-		final WebDriverWait wait = new WebDriverWait(DRIVER, 10);
+		final WebDriverWait wait = new WebDriverWait(DRIVER, 15);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 	}
 
@@ -165,11 +170,11 @@ public class Drivers {
 		Alert alert = DRIVER.switchTo().alert();
 		alert.accept();
 	}
-	
+
 	protected static void refresh() {
 		DRIVER.navigate().refresh();
 	}
-	
+
 	protected static void deleteCookies() {
 		DRIVER.manage().deleteAllCookies();
 	}
@@ -224,7 +229,6 @@ public class Drivers {
 		DRIVER.close();
 	}
 
-	
 	protected static void closeWindow() {
 		DRIVER.quit();
 		log.info("Turn off chrome browser");
@@ -261,7 +265,7 @@ public class Drivers {
 
 	public static String getBrowser() throws IOException {
 		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
-	    String browserName = cap.getBrowserName().toLowerCase();
+		String browserName = cap.getBrowserName().toLowerCase();
 		return browserName;
 
 	}
@@ -278,6 +282,4 @@ public class Drivers {
 		}
 	}
 
-	
-	
 }
