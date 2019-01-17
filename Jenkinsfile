@@ -1,6 +1,6 @@
- /*======================================================================================*
+/*======================================================================================*
  * Pipeline para execução dos testes de regressão automatizados no Jenkins CI/CD
- * Author: Carlos Almeida 	
+ * Author: Carlos Almeida 
  * Job Execution: once a day on the 1st and 15th of every month except December 
  *=======================================================================================*/
 pipeline {
@@ -36,11 +36,9 @@ spec:
     }
   }
   
-	triggers { 
-				
-		cron('H H 1,15 1-11 *')
-		
-	}
+triggers { 
+cron('H H 1,15 1-11 *')
+}
   stages {
         stage('Configurar ChromeDriver ') {
       steps {
@@ -51,7 +49,7 @@ spec:
          
           script {
             
-             sh (script: "cp /usr/local/bin/chromedriver /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/driver/")
+             sh (script: "cp /usr/local/bin/chromedriver /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/")
              
           }
         }
@@ -67,7 +65,7 @@ spec:
          
             script {
             
-             sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/driver/; ls")
+             sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/; ls")
              
           }
         }
@@ -78,12 +76,12 @@ spec:
       steps {
         echo "Branch is ${env.BRANCH_NAME}..."
        
-          echo "Projeto de testes com Selenium - /RelatorioTest/ArquivoPDFRelatorio/Evidences/ "
+          echo "Projeto de testes com Selenium - /RelatorioTest/ArquivoPDFRelatorio/evidences/ "
         container("qa-slave") {
          
           script {
             
-             sh (script: "mkdir -p /RelatorioTest/ArquivoPDFRelatorio/Evidences/ cd /RelatorioTest/ArquivoPDFRelatorio/Evidences/; ls")
+             sh (script: "mkdir -p /RelatorioTest/ArquivoPDFRelatorio/evidences/ cd /RelatorioTest/ArquivoPDFRelatorio/evidences/; ls")
              
           }
         }
@@ -96,7 +94,7 @@ spec:
         container("qa-slave") {
           echo "Projeto de testes com Selenium"
           script {
-    sh (script: "mvn -Dtest=scenarios.cadastro.Ct2759CadastroNaoEVoce -Dplatform=WEB-CHROME -DinputType=EXCEL -DautomationTool=SELENIUM test; cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls")
+    sh (script: "mvn test -Dplatform=WEB-CHROME -DinputType=EXCEL -DautomationTool=SELENIUM test; cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls")
             
           }
         }
@@ -109,61 +107,60 @@ spec:
   post {
         
            always {
-          		echo 'Publicar Evidências da execução dos testes automatizados no Jenkins '
+          echo 'Publicar Evidências da execução dos testes automatizados no Jenkins '
               
             script {
             
-            sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
+            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
           }
           
           archiveArtifacts artifacts: '**/Evidencias.tar.gz', fingerprint: true 
-       	 
-       	 }
-       	 
+         
+        }
+         
            failure {
            echo 'I failed :('
               script: sendMessage("Existem falhas nos Testes do Job ${env.JOB_NAME} - Build Number: ${env.BUILD_NUMBER} Verificar Evidências publicadas no Jenkins")
          
            script {
             
-            sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/; pwd ; ls -la; ")
+            sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls; tar -czvf Evidencias.tar.gz /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; pwd ; ls -la; ")
           }
            archiveArtifacts artifacts: '**/Evidencias.tar.gz', fingerprint: true 
-       	 
-       	 }
-       	 
-       	 success {
+         
+        }
+         
+        success {
            echo ' Build Success!! - Testes executados com sucesso!'
               
-       	            
+                    
             script {
             
-             sh (script: "cd /home/jenkins/workspace/efa3green_develop-GMJDJP72LZOSCP63AIVNGMPJTFF7JIO3WTCHLGT4YGXJVIWIETYA/Evidences/;  pwd ; ls -la;")
+             sh (script: "cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/;  pwd ; ls -la;")
              
           }
-       	 
-       	 }
-       	 
-       	
+         
+        }
+         
+        
     }
     
      
   }
   
  /*================================================================*
- * Scripts Utilitarios								               * 
+ * Scripts Utilitarios                * 
  *================================================================*/
    
       def sendMessage(msg) {
-  		 try {
-     	withCredentials([string(credentialsId: 'gchat-token', variable: 'GTOKEN')]) {
+  try {
+      withCredentials([string(credentialsId: 'gchat-token', variable: 'GTOKEN')]) {
         googlechatnotification url: "https://chat.googleapis.com/v1/spaces/AAAASaW7Wy8/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=$GTOKEN", message: msg + "(<${env.BUILD_URL}|Mais Informacoes>)" 
-     	                             
-     	}
-   		}
-   		
-   		catch (Exception e) {
+                                   
+      }
+    }
+    
+    catch (Exception e) {
                           
    }
-	
-	}
+}

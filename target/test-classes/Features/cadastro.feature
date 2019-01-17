@@ -25,3 +25,7 @@ Funcionalidade: Cadastro
     E informo minha profissão
     E informo minha renda, sem patrimônio
     E informo Não em todos os itens de Declarações e Autorizações
+		E aceite todos os termos    
+		E informo meus dados bancários
+		E confirmo minha conta bancária cadastrada
+		Então devo ver a mensagem de Falta Pouco

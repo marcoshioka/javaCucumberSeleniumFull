@@ -110,6 +110,8 @@ public class Drivers {
 		DRIVER.get(url);
 	}
 
+	
+	
 	protected String getBrowserName() {
 		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
 		return cap.getBrowserName().toUpperCase();
@@ -197,6 +199,15 @@ public class Drivers {
 		e.click();
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
 		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+	}
+	
+	public static String getText(By elemento) {
+		By by = elemento;
+		WebElement e = DRIVER.findElement(by);
+		String text = e.getText();
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+		return text;
 	}
 
 	public static void jsClick(By elemento) {

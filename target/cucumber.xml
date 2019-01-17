@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="62.554642">
-    <testcase classname="Cadastro" name="Cadastro full" time="62.554642">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="80.697676">
+    <testcase classname="Cadastro" name="Cadastro full" time="80.697676">
         <system-out>
             <![CDATA[Dado que eu tenha um email para cadastro....................................passed
 E que eu esteja na pagina de cadastro da Pi.................................passed
@@ -19,6 +19,10 @@ E informo que não sou politicamente exposto.................................pas
 E informo minha profissão...................................................passed
 E informo minha renda, sem patrimônio.......................................passed
 E informo Não em todos os itens de Declarações e Autorizações...............passed
+E aceite todos os termos....................................................passed
+E informo meus dados bancários..............................................passed
+E confirmo minha conta bancária cadastrada..................................passed
+Então devo ver a mensagem de Falta Pouco....................................passed
 ]]>
         </system-out>
     </testcase>

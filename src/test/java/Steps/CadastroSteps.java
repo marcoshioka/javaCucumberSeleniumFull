@@ -5,19 +5,24 @@ import PageObjects.CadastroPage;
 import PageObjects.CodigoSmsPage;
 import PageObjects.ContatoPage;
 import PageObjects.CpfPage;
+import PageObjects.DadosBancariosPage;
 import PageObjects.DadosPage;
 import PageObjects.DeclaracaoAutorizacaoPage;
 import PageObjects.DocumentoPage;
 import PageObjects.EmailTemporarioPage;
 import PageObjects.EnderecoPage;
+import PageObjects.FaltaPoucoPage;
+import PageObjects.MinhasContasPage;
 import PageObjects.PoliticamenteExpostoPage;
 import PageObjects.ProfissaoPage;
 import PageObjects.RendaPatrimonioPage;
 import PageObjects.SenhaPage;
+import PageObjects.TermosPage;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.pt.Dado;
+import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 
 public class CadastroSteps {
@@ -35,6 +40,10 @@ public class CadastroSteps {
 	private ProfissaoPage ProfissaoPage = new ProfissaoPage();
 	private RendaPatrimonioPage RendaPatrimonioPage = new RendaPatrimonioPage();
 	private DeclaracaoAutorizacaoPage DeclaracaoAutorizacaoPage = new DeclaracaoAutorizacaoPage();
+	private TermosPage TermosPage = new TermosPage();
+	private DadosBancariosPage DadosBancariosPage = new DadosBancariosPage();
+	private MinhasContasPage MinhasContasPage = new MinhasContasPage();
+	private FaltaPoucoPage FaltaPoucoPage = new FaltaPoucoPage();
 	private Hooks hooks = new Hooks();
 	private PDFGenerator pdfGenerator = new PDFGenerator();
 
@@ -191,7 +200,7 @@ public class CadastroSteps {
 		pdfGenerator.conteudoPDF(name);
 		hooks.getEvidence();
 	}
-	
+
 	@Dado("^informo minha profissão$")
 	public void informo_minha_profissão() throws Throwable {
 		String name = "E informo minha profissão";
@@ -213,12 +222,57 @@ public class CadastroSteps {
 		pdfGenerator.conteudoPDF(name);
 		hooks.getEvidence();
 	}
-	
+
 	@Dado("^informo Não em todos os itens de Declarações e Autorizações$")
 	public void informo_Não_em_todos_os_itens_de_Declarações_e_Autorizações() throws Throwable {
 		String name = "E informo Não em todos os itens de Declarações e Autorizações";
 		DeclaracaoAutorizacaoPage.verificarPaginaDeclaracoesAutorizacoes();
 		DeclaracaoAutorizacaoPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(name);
+		hooks.getEvidence();
+	}
+
+	@Dado("^aceite todos os termos$")
+	public void aceite_todos_os_termos() throws Throwable {
+		String name = "E aceite todos os termos";
+		TermosPage.verificarPaginaTermos();
+		TermosPage.aceitarTermoRegrasParametro();
+		TermosPage.aceitarTermoAdesao();
+		TermosPage.aceitarTermoCondicoesGerais();
+		TermosPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(name);
+		hooks.getEvidence();
+	}
+
+	@Dado("^informo meus dados bancários$")
+	public void informo_meus_dados_bancários() throws Throwable {
+		String name = "E informo meus dados bancários";
+		DadosBancariosPage.verificarPaginaDadosBancarios();
+		DadosBancariosPage.selecionarBancoSantander();
+		DadosBancariosPage.selecionarContaCorrente();
+		DadosBancariosPage.inserirAgencia();
+		DadosBancariosPage.inserirNumeroConta();
+		DadosBancariosPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(name);
+		hooks.getEvidence();
+	}
+
+	@Dado("^confirmo minha conta bancária cadastrada$")
+	public void confirmo_minha_conta_bancária_cadastrada() throws Throwable {
+		String name = "E confirmo minha conta bancária cadastrada";
+		MinhasContasPage.verificarPaginaMinhasContas();
+		MinhasContasPage.verificarExibicaoContaCadastrada();
+		MinhasContasPage.clicaSeguir();
+		pdfGenerator.conteudoPDF(name);
+		hooks.getEvidence();
+	}
+
+	@Então("^devo ver a mensagem de Falta Pouco$")
+	public void devo_ver_a_mensagem_de_Falta_Pouco() throws Throwable {
+		String name = "Então devo ver a mensagem de Falta Pouco";
+		FaltaPoucoPage.verificarPaginaFaltaPouco();
+		FaltaPoucoPage.verificarExibicaoMensagem();
+		FaltaPoucoPage.verificarIrParaPaginaInicial();
 		pdfGenerator.conteudoPDF(name);
 		hooks.getEvidence();
 	}
