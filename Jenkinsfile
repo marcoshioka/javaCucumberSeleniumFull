@@ -1,4 +1,4 @@
-/*======================================================================================*
+ /*======================================================================================*
  * Pipeline para execução dos testes de regressão automatizados no Jenkins CI/CD
  * Author: Carlos Almeida 
  * Job Execution: once a day on the 1st and 15th of every month except December 
