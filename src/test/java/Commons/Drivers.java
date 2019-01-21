@@ -50,10 +50,16 @@ public class Drivers {
 	static String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
 			+ "\\files\\dadosTemporarios.txt";
 
+	/*private enum driver {
+		chrome, firefox, edge, ie, safari;
+		}*/
+	
 	protected static void accessDefined(String driver) throws IOException {
-		switch (driver) {
-		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+				
+		//switch (driver) {
+		//case "chrome":
+		if (driver == "chrome") {	
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
@@ -72,23 +78,31 @@ public class Drivers {
 			// "--user-agent=Chrome/56.0.0.0 Mobile |
 			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
 			DRIVER = new ChromeDriver(options);
-			break;
-		case "firefox":
+			//break;
+		}
+		if(driver == "firefox")
+		//case "firefox":
+		{
 			System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
 			optionsFirefox.addArguments("disable-infobars");
 			optionsFirefox.addArguments("--print-to-pdf");
 			optionsFirefox.addArguments("--start-maximized");
 			DRIVER = new FirefoxDriver(optionsFirefox);
-			break;
-		case "edge":
+			//break;
+		}
+		if (driver == "edge")
+		//case "edge":
+		{
 			System.setProperty("webdriver.edge.driver", "./driver/MicrosoftWebDriver.exe");
 			EdgeOptions edgeOptions = new EdgeOptions();
 			edgeOptions.setCapability("InPrivate", true);
 			DRIVER = new EdgeDriver(edgeOptions);
 			DRIVER.manage().window().maximize();
-			break;
-		case "ie":
+			//break;
+		}
+		if (driver == "ie") {
+			//case "ie":
 			System.setProperty("webdriver.ie.driver", "./driver/IEDriverServer.exe");
 			// options.addArguments(
 			// "--user-agent=Chrome/56.0.0.0 Mobile |
@@ -97,13 +111,16 @@ public class Drivers {
 			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			DRIVER = new InternetExplorerDriver(capabilities);
 			DRIVER.manage().window().maximize();
-			break;
-		case "safari":
+			//break;
+		}
+		if (driver == "safari") {
+		//case "safari":
 			SafariOptions safariOptions = new SafariOptions();
 			safariOptions.setUseCleanSession(true); // if you wish safari to forget session everytime
 			DRIVER = new SafariDriver(safariOptions);
-			break;
+			//break;
 		}
+		//}
 	}
 
 	public static void irParaURL(String url) throws Throwable {
