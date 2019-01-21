@@ -53,7 +53,7 @@ public class Drivers {
 	protected static void accessDefined(String driver) throws IOException {
 		switch (driver) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
