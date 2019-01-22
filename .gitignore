@@ -1,6 +1,6 @@
 /target/
-!/target/.gitkeep.txt 
+!target/.gitkeep.txt 
 /driver/
-!/driver/.gitkeep.txt 
+!driver/.gitkeep.txt 
 /evidences/
-!/evidences/gitkeep.txt 
+!evidences/gitkeep.txt 
