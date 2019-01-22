@@ -94,7 +94,7 @@ cron('H H 1,15 1-11 *')
         container("qa-slave") {
           echo "Projeto de testes com Selenium"
           script {
-    sh (script: "mvn test -Dplatform=WEB-CHROME -DinputType=EXCEL -DautomationTool=SELENIUM test; cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls")
+    sh (script: "mvn clean test -Dcucumber.options='src/test/java/features/cadastro.feature'; cd /home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/; ls")
             
           }
         }
