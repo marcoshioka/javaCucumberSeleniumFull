@@ -142,7 +142,7 @@ public class PDFGenerator extends Drivers {
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
 		new Folder("./Evidences/" + featureName).mkdirs();
-		PdfWriter.getInstance(document, new FileOutputStream(("./evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream(("/home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
 		document.open();
 
