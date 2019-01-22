@@ -59,6 +59,7 @@ public class Drivers {
 		//switch (driver) {
 		//case "chrome":
 		if (driver == "chrome") {	
+			//Verificar se o arquivo .gitignore está com o paht /driver/ para impedir que o chromedriver.exe suba para o repositório
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			/**
