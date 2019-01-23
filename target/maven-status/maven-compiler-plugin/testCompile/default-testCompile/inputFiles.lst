@@ -14,7 +14,6 @@ C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\E
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\LoginPage.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\Commons\PDFGenerator.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\DocumentoPage.java
-C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\Runner\testrunner.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\CodigoSmsPage.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\Commons\Drivers.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\RendaPatrimonioPage.java
@@ -25,3 +24,4 @@ C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\Commons\GeraC
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\CpfPage.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\MinhasContasPage.java
 C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\PageObjects\EmailTemporarioPage.java
+C:\Users\mribeirh\eclipse-cucumber\Cucumber_Selenium\src\test\java\Runner\RunTest.java

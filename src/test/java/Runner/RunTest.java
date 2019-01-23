@@ -14,12 +14,12 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json",
 		"junit:target/cucumber.xml", "com.cucumber.listener.ExtentCucumberFormatter:target/report.html" }, features = {
-				"src/test/java/Features/cadastro.feature",  
+				/*"src/test/resources/Features/cadastro.feature",*/  
 				//"src/test/java/Features/login.feature",
-				/*"src/test/java//Features"*/}, 
+				"src/test/resources/Features"}, 
 		glue = { "Steps" }, tags = {})
 
-public class testrunner {
+public class RunTest {
 	 @AfterClass
 	    public static void setup() {
 	        Reporter.loadXMLConfig(new File("extent-config.xml"));

@@ -9,10 +9,10 @@ PageObjects\DadosPage.class
 PageObjects\FaltaPoucoPage.class
 PageObjects\PoliticamenteExpostoPage.class
 Steps\Hooks$1Local.class
-Runner\testrunner.class
 PageObjects\DeclaracaoAutorizacaoPage.class
 PageObjects\DocumentoPage.class
 Commons\GeradorDeData.class
+Runner\RunTest.class
 PageObjects\CodigoSmsPage.class
 Commons\Sorting.class
 PageObjects\EmailTemporarioPage.class
