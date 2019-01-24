@@ -71,7 +71,7 @@ public class Drivers {
 			 * mobileEmulation.put("deviceName", "iPhone X");
 			 * options.setExperimentalOption("mobileEmulation", mobileEmulation);
 			 */
-
+			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--disable-notifications");
 			options.addArguments("disable-infobars");
 			options.addArguments("--print-to-pdf");
