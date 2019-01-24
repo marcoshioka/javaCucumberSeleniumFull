@@ -74,6 +74,7 @@ public class Drivers {
 			 */
 			//options.addArguments("--no-sandbox");
 			//options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--headless");
 			options.addArguments("--disable-notifications");
 			options.addArguments("disable-infobars");
 			options.addArguments("--print-to-pdf");
