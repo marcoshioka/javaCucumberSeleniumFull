@@ -144,6 +144,7 @@ public class PDFGenerator extends Drivers {
 		new Folder("./Evidences/" + featureName).mkdirs();
 		PdfWriter.getInstance(document, new FileOutputStream(("./piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
 		//PdfWriter.getInstance(document, new FileOutputStream("//" + "Feature " + featureName + "//" + "evidencia.pdf"));
+		//./piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ
 		document.open();
 
 		Font f = new Font();
