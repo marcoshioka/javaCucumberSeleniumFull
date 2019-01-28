@@ -7,7 +7,7 @@ pipeline {
  
   agent { 
     kubernetes {
-      label 'jenkins-slave'
+      label 'qa-slave'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
