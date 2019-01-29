@@ -74,11 +74,12 @@ public class Drivers {
 			 */
 			//options.addArguments("--no-sandbox");
 			//options.addArguments("--disable-dev-shm-usage");
-			options.addArguments("--headless");
-			options.addArguments("--disable-notifications");
-			options.addArguments("disable-infobars");
-			options.addArguments("--print-to-pdf");
 			options.addArguments("--start-maximized");
+			options.addArguments("--disable-gpu");
+			options.addArguments("--headless");
+			options.addArguments("--disable-extensions");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-software-rasterizer");
 			// options.addArguments(
 			// "--user-agent=Chrome/56.0.0.0 Mobile |
 			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
