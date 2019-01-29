@@ -13,7 +13,7 @@ import cucumber.api.java.pt.Quando;
 public class LoginSteps extends LoginPage {
 	private LoginPage LoginPage = new LoginPage();
 	private Hooks hooks = new Hooks();
-//	private PDFGenerator pdfGenerator = new PDFGenerator();
+	private PDFGenerator pdfGenerator = new PDFGenerator();
 	
 	
 	@Before(value = "@login", order = 1)
