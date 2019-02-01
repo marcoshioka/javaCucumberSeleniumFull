@@ -65,7 +65,7 @@ public class Drivers {
 		if (driver == "chrome") {
 			///home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/chromedriver
 			//Verificar se o arquivo .gitignore está com o paht /driver/ para impedir que o chromedriver.exe suba para o repositório
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
