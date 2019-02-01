@@ -9,6 +9,7 @@ import com.cucumber.listener.Reporter;
 import com.github.javafaker.Faker;
 
 import Commons.Drivers;
+import org.openqa.selenium.Keys;
 
 public class DadosBancariosPage {
 
@@ -21,7 +22,9 @@ public class DadosBancariosPage {
 	protected static By bancoSantander = By.xpath("//button[contains(text(), '033 - Banco Santander S. A.')]");
 	protected static By tipoConta = By
 			.xpath("//span[contains(text(),'Tipo de Conta')]/ancestor::label/following-sibling::input");
-	protected static By contaCorrente = By.xpath("//button[contains(text(), 'Conta Corrente')]");
+	protected static By campoTipoConta = By.xpath("//option[@value='Conta Poupança' and 'Conta Corrente']/ancestor::select[@class='slds-select']");
+	protected static By contaCorrente = By.xpath("//option[contains(text(), 'Conta Corrente')]/ancestor::select");
+	protected static By contaPoupança = By.xpath("//option[@value='Conta Poupança']");
 	protected static By campoAgencia = By.xpath("//input[@placeholder='Agência']");
 	protected static By campoConta = By.xpath("//input[@placeholder='Conta e digito']");
 
@@ -37,14 +40,32 @@ public class DadosBancariosPage {
 		Drivers.sendKeys(selecionaBanco, "Santander");
 		Drivers.jsClick(bancoSantander);
 		Drivers.marcarElemento(selecionaBanco);
+		Drivers.sendKeys(selecionaBanco, Keys.TAB.toString());
 		Reporter.addStepLog("Banco Santander selecionado com sucesso.");
+	}
+
+	public void selecionarContaPoupança() throws IOException {
+		Reporter.addStepLog("Selecionando Conta Poupança");
+		//Drivers.click(tipoConta);
+		//Drivers.jsClick(campoTipoConta);
+		//Drivers.sendKeys(campoTipoConta, Keys.ENTER.toString());
+		//Drivers.sendKeys(contaPoupança, Keys.ENTER.toString());
+		//Drivers.jsClick(contaPoupança);
+		//Drivers.jsClick(contaCorrente);
+		//Drivers.marcarElemento(tipoConta);
+		Drivers.selectDropDown(campoTipoConta, "Conta Poupança");
+		Drivers.marcarElemento(campoTipoConta);
+		Reporter.addStepLog("Conta Poupança selecionada com sucesso.");
 	}
 
 	public void selecionarContaCorrente() throws IOException {
 		Reporter.addStepLog("Selecionando Conta Corrente");
-		Drivers.click(tipoConta);
-		Drivers.jsClick(contaCorrente);
-		Drivers.marcarElemento(tipoConta);
+		//Drivers.click(tipoConta);
+		//Drivers.jsClick(campoTipoConta);
+		//Drivers.jsClick(contaCorrente);
+		//Drivers.marcarElemento(tipoConta);
+		Drivers.selectDropDown(campoTipoConta, "Conta Corrente");
+		Drivers.marcarElemento(campoTipoConta);
 		Reporter.addStepLog("Conta Corrente selecionada com sucesso.");
 	}
 
@@ -59,6 +80,7 @@ public class DadosBancariosPage {
 		Reporter.addStepLog("Inserindo número da conta");
 		String numeroConta = faker.number().digits(9);
 		Drivers.sendKeys(campoConta, numeroConta);
+		Drivers.sendKeys(campoConta, Keys.TAB.toString());
 		Reporter.addStepLog("Conta número " + numeroConta + " inserida com sucesso.");
 	}
 

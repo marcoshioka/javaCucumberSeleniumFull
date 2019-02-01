@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import cucumber.api.java.cs.A;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
@@ -35,6 +37,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -62,7 +65,7 @@ public class Drivers {
 		if (driver == "chrome") {
 			///home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/chromedriver
 			//Verificar se o arquivo .gitignore está com o paht /driver/ para impedir que o chromedriver.exe suba para o repositório
-		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
@@ -79,7 +82,7 @@ public class Drivers {
 			options.addArguments("--headless");
 			options.addArguments("--disable-extensions");
 			options.addArguments("--no-sandbox");
-			options.addArguments("--disable-software-rasterizer");
+			options.addArguments("--disable-software-rasterizer");//options.addArguments("--disable-gpu");
 			// options.addArguments(
 			// "--user-agent=Chrome/56.0.0.0 Mobile |
 			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
@@ -181,13 +184,13 @@ public class Drivers {
 	}
 
 	public static void waitForElementToBeClickable(By elemento) {
-		final WebDriverWait wait = new WebDriverWait(DRIVER, 15);
+		final WebDriverWait wait = new WebDriverWait(DRIVER, 150);
 		wait.until(ExpectedConditions.elementToBeClickable(elemento));
 
 	}
 
 	public static void waitForElementToBeVisible(By elemento) {
-		final WebDriverWait wait = new WebDriverWait(DRIVER, 15);
+		final WebDriverWait wait = new WebDriverWait(DRIVER, 150);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(elemento));
 	}
 
@@ -223,7 +226,27 @@ public class Drivers {
 		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
 		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
 	}
-	
+
+	public static void actionClick(By elemento) {
+		By by = elemento;
+		WebElement e = DRIVER.findElement(by);
+		Actions ob = new Actions(DRIVER);
+		ob.click(e);
+		Action action  = ob.build();
+		action.perform();
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+	}
+
+	public static void selectDropDown(By elemento, String opcao) {
+		By by = elemento;
+		WebElement e = DRIVER.findElement(by);
+		Select dropdown= new Select(e);
+		dropdown.selectByVisibleText(opcao);
+		JavascriptExecutor jse = (JavascriptExecutor) DRIVER;
+		jse.executeScript("arguments[0].setAttribute('style', arguments[1]);", e, "color: ; border: 2px solid red;");
+	}
+
 	public static String getText(By elemento) {
 		By by = elemento;
 		WebElement e = DRIVER.findElement(by);
