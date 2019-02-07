@@ -6,11 +6,14 @@ import com.cucumber.listener.Reporter;
 
 import Commons.Drivers;
 
+import java.io.IOException;
+
 public class CodigoSmsPage {
 
 	
 	protected static By titulo = By.xpath("//h2[contains(text(), 'Mandamos um')]/b[contains(text(), 'SMS')]");
 	protected static By tentarMaisTarde = By.xpath("//button[contains(text(), 'Tentar mais tarde')]");
+	protected static By botaoSeguir = By.xpath("//button[contains(text(),'Seguir')]");
 
 	
 	public void verificarPaginaSms() throws Throwable {
@@ -25,6 +28,12 @@ public class CodigoSmsPage {
 		Drivers.click(tentarMaisTarde);
 		Reporter.addStepLog("'Tentar mais tarde' acionado com sucesso");
 	}
-	
+
+	public void clicaSeguir() throws IOException {
+		Reporter.addStepLog("Acionando botão Seguir");
+		Drivers.waitForElementToBeVisible(botaoSeguir);
+		Drivers.jsClick(botaoSeguir);
+		Reporter.addStepLog("Botão Seguir acionado com sucesso.");
+	}
 
 }

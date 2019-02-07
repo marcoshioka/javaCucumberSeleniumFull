@@ -201,6 +201,15 @@ public class CadastroSteps {
         hooks.getEvidence();
     }
 
+    @Quando("^sigo sem código pela tela de envio de SMS$")
+    public void sigo_sem_código_pela_tela_de_envio_de_SMS() throws Throwable {
+        String name = "E sigo sem código pela tela de envio de SMS";
+        CodigoSmsPage.verificarPaginaSms();
+        CodigoSmsPage.clicaSeguir();
+        pdfGenerator.conteudoPDF(name);
+        hooks.getEvidence();
+    }
+
     @Dado("^informo que não sou politicamente exposto$")
     public void informo_que_não_sou_politicamente_exposto() throws Throwable {
         String name = "E informo que não sou politicamente exposto";

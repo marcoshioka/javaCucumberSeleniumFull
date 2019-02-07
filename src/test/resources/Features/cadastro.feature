@@ -6,7 +6,6 @@ Funcionalidade: Cadastro
   Quero realizar cadastro
   Para operar na Pi
 
-
   Cenario: Cadastro full
     Dado que eu tenha um email para cadastro
     E que eu esteja na pagina de cadastro da Pi
@@ -21,7 +20,7 @@ Funcionalidade: Cadastro
     E as informacoes de endereço
     E insiro as informações de CNH
     E insiro as informações de contato
-    E seleciono Tentar mais tarde para envio do SMS
+    E sigo sem código pela tela de envio de SMS
     E informo que não sou politicamente exposto
     E informo minha profissão
     E informo minha renda, sem patrimônio

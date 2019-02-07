@@ -30,8 +30,8 @@ public class ContatoPage {
 		Reporter.addStepLog("Verificando a página de contatos");
 		Drivers.waitForElementToBeVisible(titulo);
 		Drivers.marcarElemento(titulo);
-		Drivers.waitForElementToBeVisible(campoEmail);
-		Drivers.marcarElemento(campoEmail);
+		//Drivers.waitForElementToBeVisible(campoEmail);
+		//Drivers.marcarElemento(campoEmail);
 		Reporter.addStepLog("Página verificada com sucesso.");
 	}
 
