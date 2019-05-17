@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-//import javax.ws.rs.core.Request;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.wicket.util.file.Folder;
@@ -141,8 +140,11 @@ public class PDFGenerator extends Drivers {
 				
 		document = new Document(PageSize.A4, 50, 50, 50, 50);
 		document.setPageSize(PageSize.A4);
-		new Folder("/home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName).mkdirs();
-		PdfWriter.getInstance(document, new FileOutputStream(("/home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
+		new Folder("./evidences/" + featureName).mkdirs();
+		PdfWriter.getInstance(document, new FileOutputStream(("./evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
+		//new Folder("/home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName).mkdirs();
+		//PdfWriter.getInstance(document, new FileOutputStream(("/home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/evidences/" + featureName + "/") + featureName + " - " + scenario.getName() + ".pdf"));
+
 
 		document.open();
 

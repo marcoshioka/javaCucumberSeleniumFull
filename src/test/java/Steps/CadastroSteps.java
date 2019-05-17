@@ -1,23 +1,7 @@
 package Steps;
 
 import Commons.PDFGenerator;
-import PageObjects.CadastroPage;
-import PageObjects.CodigoSmsPage;
-import PageObjects.ContatoPage;
-import PageObjects.CpfPage;
-import PageObjects.DadosBancariosPage;
-import PageObjects.DadosPage;
-import PageObjects.DeclaracaoAutorizacaoPage;
-import PageObjects.DocumentoPage;
-import PageObjects.EmailTemporarioPage;
-import PageObjects.EnderecoPage;
-import PageObjects.FaltaPoucoPage;
-import PageObjects.MinhasContasPage;
-import PageObjects.PoliticamenteExpostoPage;
-import PageObjects.ProfissaoPage;
-import PageObjects.RendaPatrimonioPage;
-import PageObjects.SenhaPage;
-import PageObjects.TermosPage;
+import PageObjects.*;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -29,6 +13,7 @@ import cucumber.api.java.pt.Quando;
 public class CadastroSteps {
 
     private CadastroPage CadastroPage = new CadastroPage();
+    private DadosUnificadosPage DadosUnificadosPage = new DadosUnificadosPage();
     private EmailTemporarioPage EmailTemporarioPage = new EmailTemporarioPage();
     private SenhaPage SenhaPage = new SenhaPage();
     private CpfPage CpfPage = new CpfPage();
@@ -44,6 +29,8 @@ public class CadastroSteps {
     private TermosPage TermosPage = new TermosPage();
     private DadosBancariosPage DadosBancariosPage = new DadosBancariosPage();
     private MinhasContasPage MinhasContasPage = new MinhasContasPage();
+    private AvisoFotoPage AvisoFotoPage = new AvisoFotoPage();
+    private FotoPage FotoPage = new FotoPage();
     private FaltaPoucoPage FaltaPoucoPage = new FaltaPoucoPage();
     private Hooks hooks = new Hooks();
     private PDFGenerator pdfGenerator = new PDFGenerator();
@@ -79,6 +66,20 @@ public class CadastroSteps {
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
     }
+
+    @Quando("^eu envio dados unificados de cadastro$")
+    public void eu_envio_dados_unificados_de_cadastro() throws Throwable {
+        String name = "Quando eu envio dados unificados de_cadastro";
+        DadosUnificadosPage.inserirNome();
+        DadosUnificadosPage.inserirEmail();
+        DadosUnificadosPage.confirmarEmail();
+        DadosUnificadosPage.enviarDadosSenha();
+        DadosUnificadosPage.clicaSeguir();
+        pdfGenerator.conteudoPDF(name);
+        hooks.getEvidence();
+
+    }
+
 
     @Quando("^eu envio nome valido com e-mail$")
     public void eu_envio_nome_valido_com_e_mail() throws Throwable {
@@ -128,6 +129,7 @@ public class CadastroSteps {
     @Dado("^insiro CPF$")
     public void insiro_CPF() throws Throwable {
         String name = "E insiro CPF";
+        //CpfPage.irParaTelaCPF();
         CpfPage.insereCPF();
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
@@ -145,14 +147,15 @@ public class CadastroSteps {
         hooks.getEvidence();
     }
 
-    @Dado("^as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade$")
-    public void as_informacoes_Nome_da_Mãe_nome_do_pai_Nacionalidade_Estado_Cidade() throws Throwable {
+    @Dado("^as informacoes Nome da Mãe, Nacionalidade, Estado, Cidade$")
+    public void as_informacoes_Nome_da_Mãe_Nacionalidade_Estado_Cidade() throws Throwable {
         String name = "E as informacoes Nome da Mãe, Nome do pai, Nacionalidade, Estado, Cidade";
         DadosPage.insereNomeMae();
-        DadosPage.insereNomePai();
+        //DadosPage.insereNomePai();
         DadosPage.selecionaNacionalidadeBrasileiroNato();
         DadosPage.selecionaEstadoSP();
         DadosPage.selecionaCidadeSP();
+        //DadosPage.selecionaEstadoSP();
         DadosPage.clicaSeguir();
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
@@ -210,16 +213,6 @@ public class CadastroSteps {
         hooks.getEvidence();
     }
 
-    @Dado("^informo que não sou politicamente exposto$")
-    public void informo_que_não_sou_politicamente_exposto() throws Throwable {
-        String name = "E informo que não sou politicamente exposto";
-        PoliticamenteExpostoPage.verificarPaginaPoliticamenteExposto();
-        PoliticamenteExpostoPage.clicarBotaoNao();
-        PoliticamenteExpostoPage.clicaSeguir();
-        pdfGenerator.conteudoPDF(name);
-        hooks.getEvidence();
-    }
-
     @Dado("^informo minha profissão$")
     public void informo_minha_profissão() throws Throwable {
         String name = "E informo minha profissão";
@@ -230,6 +223,7 @@ public class CadastroSteps {
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
     }
+
 
     @Dado("^informo minha renda, sem patrimônio$")
     public void informo_minha_renda_sem_patrimônio() throws Throwable {
@@ -255,9 +249,10 @@ public class CadastroSteps {
     public void aceite_todos_os_termos() throws Throwable {
         String name = "E aceite todos os termos";
         TermosPage.verificarPaginaTermos();
+        TermosPage.aceitarTermoDeclaracaoResidencia();
+        TermosPage.aceitarTermoCondicoesGerais();
         TermosPage.aceitarTermoRegrasParametro();
         TermosPage.aceitarTermoAdesao();
-        TermosPage.aceitarTermoCondicoesGerais();
         TermosPage.clicaSeguir();
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
@@ -277,6 +272,17 @@ public class CadastroSteps {
         hooks.getEvidence();
     }
 
+    @Dado("^informo que não sou politicamente exposto$")
+    public void informo_que_não_sou_politicamente_exposto() throws Throwable {
+        String name = "E informo que não sou politicamente exposto";
+        PoliticamenteExpostoPage.verificarPaginaPoliticamenteExposto();
+        PoliticamenteExpostoPage.clicarBotaoNao();
+        PoliticamenteExpostoPage.clicaSeguir();
+        pdfGenerator.conteudoPDF(name);
+        hooks.getEvidence();
+    }
+
+
     @Dado("^confirmo minha conta bancária cadastrada$")
     public void confirmo_minha_conta_bancária_cadastrada() throws Throwable {
         String name = "E confirmo minha conta bancária cadastrada";
@@ -287,12 +293,31 @@ public class CadastroSteps {
         hooks.getEvidence();
     }
 
+    @Dado("^sigo adiante na tela do aviso de foto$")
+    public void sigo_adiante_na_tela_do_aviso_de_foto() throws Throwable {
+        String name = "E sigo adiante na tela do aviso de foto";
+        AvisoFotoPage.verificarPaginaAvisoFoto();
+        AvisoFotoPage.clicarVamosLa();
+        pdfGenerator.conteudoPDF(name);
+        hooks.getEvidence();
+
+    }
+
+    @Dado("^escolho seguir sem enviar a imagem$")
+    public void escolho_seguir_sem_enviar_a_imagem() throws Throwable {
+        String name = "E escolho seguir sem enviar a imagem";
+        FotoPage.verificarPaginaFoto();
+        FotoPage.clicarPular();
+        pdfGenerator.conteudoPDF(name);
+        hooks.getEvidence();
+    }
+
     @Então("^devo ver a mensagem de Falta Pouco$")
     public void devo_ver_a_mensagem_de_Falta_Pouco() throws Throwable {
         String name = "Então devo ver a mensagem de Falta Pouco";
         FaltaPoucoPage.verificarPaginaFaltaPouco();
         FaltaPoucoPage.verificarExibicaoMensagem();
-        FaltaPoucoPage.verificarIrParaPaginaInicial();
+        FaltaPoucoPage.verificarConhecerCatalogo();
         pdfGenerator.conteudoPDF(name);
         hooks.getEvidence();
     }

@@ -19,7 +19,7 @@ public class RendaPatrimonioPage {
 
 	Faker faker = new Faker(new Locale("pt-BR"));
 
-	protected static By titulo = By.xpath("//b[contains(text(), 'sua renda e seu patrimônio')]");
+	protected static By titulo = By.xpath("//b[contains(text(), 'Qual sua renda e patrimônio?')]");
 	protected static By campoRendaMensal = By.xpath("//label[contains(text(), 'Minha renda mensal')]/ancestor::lightning-input/div/input[@type='text']");
 	protected static By naoPossuoPatrimonio = By.xpath("//span[contains(text(), 'Não possuo patrimônio')]");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");

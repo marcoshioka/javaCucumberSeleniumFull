@@ -7,9 +7,10 @@ import org.openqa.selenium.By;
 import com.cucumber.listener.Reporter;
 
 import Commons.Drivers;
+import org.openqa.selenium.Keys;
 
-public class ProfissaoPage {
-	protected static By titulo = By.xpath("//h2[contains(text(), 'profissão')]");
+public class ProfissaoPage extends Drivers{
+	protected static By titulo = By.xpath("//span[contains(text(), 'profissão')]");
 	protected static By campoAreaAtuacao = By.xpath("//span[contains(text(), 'Área de atuação')]/ancestor::label/following-sibling::input");
 	protected static By opcaoAnalistaDeSistemas = By.xpath("//button[contains(text(), 'Analista de Sistemas')]");
 	protected static By campoInstituicaoDeTrabalho = By.xpath("//input[@placeholder='Instituição onde trabalha']");
@@ -25,6 +26,8 @@ public class ProfissaoPage {
 	public void selecionarProfissaoAnalistaDeSistemas() throws Throwable {
 		Reporter.addStepLog("Selecionando profissão 'Analista de Sistemas'");
 		Drivers.sendKeys(campoAreaAtuacao, "Analista de Sistemas");
+		Drivers.DRIVER.findElement(campoAreaAtuacao).sendKeys(Keys.CONTROL);
+		Drivers.waitForElementToBeVisible(opcaoAnalistaDeSistemas);
 		Drivers.jsClick(opcaoAnalistaDeSistemas);
 		Reporter.addStepLog("Profissão 'Analista de Sistemas' selecionada com sucesso.");
 	}

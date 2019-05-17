@@ -15,10 +15,9 @@ public class DadosBancariosPage {
 
 	Faker faker = new Faker(new Locale("pt-BR"));
 
-	protected static By titulo = By.xpath("//b[contains(text(),'dados bancários')]/ancestor::h2");
+	protected static By titulo = By.xpath("//b[contains(text(),'informe sua conta')]/ancestor::h2");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(),'Seguir')]");
-	protected static By selecionaBanco = By
-			.xpath("//span[contains(text(),'Banco')]/ancestor::label/following-sibling::input");
+	protected static By selecionaBanco = By.xpath("//span[contains(text(),'Banco')]/ancestor::label/following-sibling::input");
 	protected static By bancoSantander = By.xpath("//button[contains(text(), '033 - Banco Santander S. A.')]");
 	protected static By tipoConta = By
 			.xpath("//span[contains(text(),'Tipo de Conta')]/ancestor::label/following-sibling::input");
@@ -37,6 +36,7 @@ public class DadosBancariosPage {
 
 	public void selecionarBancoSantander() throws IOException {
 		Reporter.addStepLog("Selecionando Banco Santander");
+		Drivers.click(selecionaBanco);
 		Drivers.sendKeys(selecionaBanco, "Santander");
 		Drivers.jsClick(bancoSantander);
 		Drivers.marcarElemento(selecionaBanco);

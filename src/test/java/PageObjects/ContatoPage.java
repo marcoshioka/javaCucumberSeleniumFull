@@ -19,7 +19,7 @@ public class ContatoPage {
 
 	private Faker faker = new Faker(new Locale("pt-BR"));
 
-	protected static By titulo = By.xpath("//h2[contains(text(), 'contatos')]");
+	protected static By titulo = By.xpath("//span[contains(text(), 'seu celular')]");
 	protected static By campoEmail = By.xpath("//input[@placeholder='Email']");
 	protected static By campoCelular = By.xpath("//input[@placeholder='Celular']");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");

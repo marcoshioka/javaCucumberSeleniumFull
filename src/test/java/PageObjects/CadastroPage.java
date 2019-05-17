@@ -21,10 +21,10 @@ public class CadastroPage extends Drivers {
 	protected static By campoNome = By.xpath("//input[@class='slds-input']");
 	protected static By campoEmail = By.xpath("//input[@type='email']");
 	protected static By botaoEnviar = By.xpath("//button[contains(text(), 'Enviar')]");
-	protected static By mensagemEnvioEmail = By.xpath("//span[contains(text(), 'entrar no seu e-mail ')]");
+	protected static By mensagemEnvioEmail = By.xpath("//span[contains(text(), 'valide seu e-mail')]");
 	
 	
-	public String urlCadastro = "https://uat-green.cs96.force.com/green/s/login/SelfRegister";
+	public String urlCadastro = "https://uat-invistacompi.cs17.force.com/s/login/SelfRegister";
 	
 	public String nome = faker.name().firstName();
 	

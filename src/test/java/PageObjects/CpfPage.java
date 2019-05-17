@@ -25,18 +25,26 @@ public class CpfPage extends Drivers{
 	
 
 	protected static By campoCPF = By.xpath("//input[@placeholder='CPF']");
-	protected static By titulo = By.xpath("//b[contains(text(),'CPF')]");
-	protected static By campoNome = By.xpath("//input[@placeholder='Nome completo']");
-	protected static By campoDataNascimento = By.xpath("//input[@placeholder='Data de nascimento']");
+	protected static By titulo = By.xpath("//span[contains(text(),'Precisamos de mais alguns dados')]");
+	protected static By campoNome = By.xpath("//label[contains(text(), 'Nome completo')]//ancestor::lightning-input");
+	protected static By campoDataNascimento = By.xpath("//label[contains(text(), 'Data de nascimento')]//ancestor::lightning-input");
 	protected static By campoSexo = By.xpath("//select[@name='sexo']");
 	protected static By sexoMasculino = By.xpath("//select[@name='sexo']//option[contains(text(), 'Masculino')]");
 	protected static By campoEstadoCivil = By.xpath("//select[@name='estadoCivil']");
 	protected static By estadoCivilSolteiro = By.xpath("//select[@name='estadoCivil']//option[contains(text(), 'Solteiro(a)')]");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");
-	
+
+	public String cpfUrl = "https://uat-invistacompi.cs17.force.com/s/cadastroprincipal/";
 	public String cpfQuando1 = "E insiro CPF";
 	public String cpfQuando2 = "E as informacoes Nome Completo, Data de nascimento, Sexo, Estado civil";
-	
+
+	public void irParaTelaCPF() throws Throwable {
+		Reporter.addStepLog("Acessando a página de cadastro do CPF");
+		Drivers.irParaURL(cpfUrl);
+		Drivers.waitForElementToBeVisible(titulo);
+		Reporter.addStepLog("Direcionamento realizado com sucesso para a página de CPF");
+	}
+
 	public void insereCPF () throws IOException{
 		Reporter.addStepLog("Inserindo CPF");
 		Drivers.waitForElementToBeVisible(titulo);

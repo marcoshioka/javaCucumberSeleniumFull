@@ -24,7 +24,7 @@ public class DocumentoPage {
 
 	public String documentoQuando1 = "E insira as informações de CNH";
 
-	protected static By titulo = By.xpath("//h2[contains(text(), 'documento')]");
+	protected static By titulo = By.xpath("//span[contains(text(), 'documento')]");
 	protected static By botaoCnh = By.xpath("//button[contains(text(), 'CNH')] ");
 	protected static By campoNumeroRegistro = By.xpath("//input[@placeholder = 'Número do registro'] ");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");

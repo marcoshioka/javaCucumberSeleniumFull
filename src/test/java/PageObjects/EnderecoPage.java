@@ -22,10 +22,11 @@ public class EnderecoPage {
 
 	Faker faker = new Faker(new Locale("pt-BR"));
 
-	protected static By titulo = By.xpath("//h2[contains(text(), 'mora')]");
+	protected static By titulo = By.xpath("//span[contains(text(), 'onde você mora?')]");
 	protected static By campoCep = By.xpath("//input[@placeholder= 'CEP']");
 	protected static By campoNumero = By.xpath("//input[@placeholder= 'Número']");
 	protected static By checkBoxSim = By.xpath("//span[contains(text(), 'Sim')]//ancestor::label[@class='slds-checkbox__label']");
+	protected static By checkBoxNao = By.xpath("//span[contains(text(), 'Não')]//ancestor::label[@class='slds-checkbox__label']");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");
 	
 	public void insereCep() throws IOException {
@@ -50,7 +51,14 @@ public class EnderecoPage {
 	public void confirmaEnderecoDeCorrespondencia() throws IOException {
 		Reporter.addStepLog("Confirmando endereço de correspondência");
 		Drivers.waitForElementToBeVisible(checkBoxSim);
-		Drivers.click(checkBoxSim);
+		Drivers.jsClick(checkBoxSim);
+		Drivers.jsClick(checkBoxNao);
+		Drivers.jsClick(checkBoxSim);
+		Drivers.click(campoNumero);
+		Drivers.sendKeys(campoNumero, Keys.BACK_SPACE.toString());
+		Drivers.jsClick(checkBoxSim);
+		Drivers.jsClick(checkBoxNao);
+		Drivers.jsClick(checkBoxSim);
 		Reporter.addStepLog("Endereço de correspondência confirmado com sucesso.");
 	}
 	

@@ -44,7 +44,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Steps.Hooks;
 
-//import actions.ConsultoriaFileReaderActions;
 
 public class Drivers {
 
@@ -54,18 +53,15 @@ public class Drivers {
 	static String pathDadosTemporarios = java.nio.file.Paths.get("").toAbsolutePath().toString()
 			+ "\\files\\dadosTemporarios.txt";
 
-	/*private enum driver {
-		chrome, firefox, edge, ie, safari;
-		}*/
-	
+
 	protected static void accessDefined(String driver) throws IOException {
-				
+
 		//switch (driver) {
 		//case "chrome":
 		if (driver == "chrome") {
 			///home/jenkins/workspace/piCoreAutomation_qa-7PYEI7R6VQS22S5LVUUOM2JB4N44WHQTST7TV5JVOFHCGOI5UUFQ/driver/chromedriver
 			//Verificar se o arquivo .gitignore está com o paht /driver/ para impedir que o chromedriver.exe suba para o repositório
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			/**
 			 * Método responsável por inserir a emulação mobile do Chrome Options
@@ -77,12 +73,15 @@ public class Drivers {
 			 */
 			//options.addArguments("--no-sandbox");
 			//options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--disable-notifications");
+			options.addArguments("disable-infobars");
+			options.addArguments("--print-to-pdf");
 			options.addArguments("--start-maximized");
-			options.addArguments("--disable-gpu");
-			options.addArguments("--headless");
-			options.addArguments("--disable-extensions");
-			options.addArguments("--no-sandbox");
-			options.addArguments("--disable-software-rasterizer");//options.addArguments("--disable-gpu");
+			//options.addArguments("--disable-gpu");
+			//options.addArguments("--headless");
+			//options.addArguments("--disable-extensions");
+			//options.addArguments("--no-sandbox");
+			//options.addArguments("--disable-software-rasterizer");
 			// options.addArguments(
 			// "--user-agent=Chrome/56.0.0.0 Mobile |
 			// E3C6CC9273EE75C2563D7CD94825033E37AB3FA3A28157AC75673ACF9FC4362A");
@@ -123,7 +122,7 @@ public class Drivers {
 			//break;
 		}
 		if (driver == "safari") {
-		//case "safari":
+			//case "safari":
 			SafariOptions safariOptions = new SafariOptions();
 			safariOptions.setUseCleanSession(true); // if you wish safari to forget session everytime
 			DRIVER = new SafariDriver(safariOptions);
@@ -136,8 +135,8 @@ public class Drivers {
 		DRIVER.get(url);
 	}
 
-	
-	
+
+
 	protected String getBrowserName() {
 		Capabilities cap = ((RemoteWebDriver) DRIVER).getCapabilities();
 		return cap.getBrowserName().toUpperCase();

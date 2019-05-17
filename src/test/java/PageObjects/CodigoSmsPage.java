@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CodigoSmsPage {
 
 	
-	protected static By titulo = By.xpath("//h2[contains(text(), 'Mandamos um')]/b[contains(text(), 'SMS')]");
+	protected static By titulo = By.xpath("//h2[contains(text(), 'Enviamos um SMS para o número')]");
 	protected static By tentarMaisTarde = By.xpath("//button[contains(text(), 'Tentar mais tarde')]");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(),'Seguir')]");
 

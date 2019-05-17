@@ -10,7 +10,7 @@ import Commons.Drivers;
 
 public class DeclaracaoAutorizacaoPage {
 	
-	protected static By titulo = By.xpath("//h2[contains(text(), 'declarações e autorizações')]");
+	protected static By titulo = By.xpath("//h2[contains(text(), 'Confirme pra gente essas informações')]");
 	protected static By botaoSeguir = By.xpath("//button[contains(text(), 'Seguir')]");
 	
 	public void verificarPaginaDeclaracoesAutorizacoes() throws Throwable {

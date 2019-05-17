@@ -12,8 +12,8 @@ public class EmailTemporarioPage extends Drivers {
 	Hooks hooks = new Hooks();
 
 	protected static By emailTemporario = By.id("mail");
-	protected static By emailRecebido = By.xpath("//a[contains(text(), 'Pi investimentos')]");
-	protected static By botaoConfirmeSeuEmail = By.xpath("//a[contains(text(), 'Confirme seu e-mail')]");
+	protected static By emailRecebido = By.xpath("//span[contains(text(), 'Pi investimentos')]");
+	protected static By botaoConfirmeSeuEmail = By.xpath("//a[contains(text(), 'Acessar meu cadastro')]");
 
 	public String urlTempMail = "https://temp-mail.org/pt/";
 
