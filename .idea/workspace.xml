@@ -1,62 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bae759ff-e8a7-4c61-af50-d71cb0d750d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/dadosTemporarios.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/dadosTemporarios.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/listaCeps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/listaCeps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/listaSenhas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/listaSenhas.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/screenshot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Commons/Drivers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Commons/Drivers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Commons/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Commons/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/CadastroPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/CadastroPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/CodigoSmsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/CodigoSmsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/ContatoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/ContatoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/CpfPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/CpfPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/DadosBancariosPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/DadosBancariosPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/DadosPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/DadosPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/DeclaracaoAutorizacaoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/DeclaracaoAutorizacaoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/DocumentoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/DocumentoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/EmailTemporarioPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/EmailTemporarioPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/EnderecoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/EnderecoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/FaltaPoucoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/FaltaPoucoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/ProfissaoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/ProfissaoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/RendaPatrimonioPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/RendaPatrimonioPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PageObjects/TermosPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PageObjects/TermosPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Steps/CadastroSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Steps/CadastroSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Features/cadastro.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Features/cadastro.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Cucumber_Selenium/Cucumber_Selenium/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Cucumber_Selenium/Cucumber_Selenium/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Commons/Drivers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Commons/Drivers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Commons/GeraCpfCnpj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Commons/GeraCpfCnpj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Commons/GeradorDeData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Commons/GeradorDeData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Commons/PDFGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Commons/PDFGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Commons/Sorting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Commons/Sorting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Features/cadastro.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Features/cadastro.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/CadastroPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/CadastroPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/CodigoSmsPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/CodigoSmsPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/ContatoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/ContatoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/CpfPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/CpfPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/DadosBancariosPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/DadosBancariosPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/DadosPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/DadosPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/DeclaracaoAutorizacaoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/DeclaracaoAutorizacaoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/DocumentoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/DocumentoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/EmailTemporarioPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/EmailTemporarioPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/EnderecoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/EnderecoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/FaltaPoucoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/FaltaPoucoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/MinhasContasPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/MinhasContasPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/PoliticamenteExpostoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/PoliticamenteExpostoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/ProfissaoPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/ProfissaoPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/RendaPatrimonioPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/RendaPatrimonioPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/SenhaPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/SenhaPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/PageObjects/TermosPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/PageObjects/TermosPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Steps/CadastroSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Steps/CadastroSteps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Steps/Hooks$1Local.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Steps/Hooks$1Local.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Steps/Hooks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Steps/Hooks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Steps/LoginSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Steps/LoginSteps.class" afterDir="false" />
-    </list>
+    <list default="true" id="bae759ff-e8a7-4c61-af50-d71cb0d750d2" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,14 +29,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/DadosPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
-              <caret line="87" column="38" lean-forward="true" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+            <state relative-caret-position="114">
+              <caret line="98" column="37" lean-forward="true" selection-start-line="98" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -140,18 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/AvisoFotoPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="30" column="5" selection-start-line="14" selection-start-column="3" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -283,7 +225,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558093163902" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558097828302" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Automations" />
   </component>
   <component name="RecentsManager">
@@ -420,7 +362,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="1" />
@@ -428,10 +369,10 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.24534413" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.24534413" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49878544" visible="true" weight="0.42628774" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.42628774" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -482,20 +423,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Jenkinsfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="148" column="2" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -692,13 +619,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Jenkinsfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="148" column="2" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PageObjects/DadosPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="87" column="38" lean-forward="true" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+        <state relative-caret-position="114">
+          <caret line="98" column="37" lean-forward="true" selection-start-line="98" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
